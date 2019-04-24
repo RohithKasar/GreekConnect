@@ -73,7 +73,7 @@ An app for students in the greek life community on campus to interact. Some exam
    * Home 
 
 ## Wireframes
-<img src="https://i.postimg.cc/DwxtzYSM/IMG-7706.jpg" width=600 rotate=90>
+<img src="https://i.postimg.cc/DwxtzYSM/IMG-7706.jpg" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 
@@ -82,9 +82,12 @@ An app for students in the greek life community on campus to interact. Some exam
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
+Post
 | Property | Type | Description |
 | -------- | ---- | ----------- |
 |  |  |  |
+| createdAt | DateTime | date when post was created (default field) |
+| updatedAt | DateTime | date when post was last updated (default field) |
 
 ### Networking
 - [Add list of network requests by screen ]
