@@ -82,6 +82,12 @@ An app for students in the greek life community on campus to interact. Some exam
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
+
+#### User
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+|  |  |  |
+
 #### Post
 | Property | Type | Description |
 | -------- | ---- | ----------- |
@@ -95,6 +101,12 @@ An app for students in the greek life community on campus to interact. Some exam
 | notGoingCount | Number | number of people that are not going to the event |
 | createdAt | DateTime | date when post was created (default field) |
 | updatedAt | DateTime | date when post was last updated (default field) |
+
+#### Comments
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+|  |  |  |
+
 
 ### Networking
 - [Add list of network requests by screen ]
