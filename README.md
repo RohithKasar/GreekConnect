@@ -85,6 +85,10 @@ An app for students in the greek life community on campus to interact. Some exam
 #### Post
 | Property | Type | Description |
 | -------- | ---- | ----------- |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
 | createdAt | DateTime | date when post was created (default field) |
 | updatedAt | DateTime | date when post was last updated (default field) |
 
