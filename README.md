@@ -82,7 +82,7 @@ An app for students in the greek life community on campus to interact. Some exam
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
-Post
+#### Post
 | Property | Type | Description |
 | -------- | ---- | ----------- |
 | createdAt | DateTime | date when post was created (default field) |
