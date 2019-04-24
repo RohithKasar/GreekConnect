@@ -83,7 +83,10 @@ An app for students in the greek life community on campus to interact. Some exam
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+|  |  |  |
+
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
