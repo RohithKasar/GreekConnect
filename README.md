@@ -85,10 +85,14 @@ An app for students in the greek life community on campus to interact. Some exam
 #### Post
 | Property | Type | Description |
 | -------- | ---- | ----------- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| objectId | String | unique id for the user post (default field) |
+| author | Pointer to User | image author |
+| image | File | image of the event flyer that the user posts |
+| event | String | caption of what the event is that the user is hosting |
+| commentsCount | Number | number of comments that are posted to the event |
+| goingCount | Number | number of people going to the event |
+| interestedCount | Number | number of people interested of going to the event |
+| notGoingCount | Number | number of people that are not going to the event |
 | createdAt | DateTime | date when post was created (default field) |
 | updatedAt | DateTime | date when post was last updated (default field) |
 
