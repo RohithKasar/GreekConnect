@@ -125,7 +125,7 @@ An app for students in the greek life community on campus to interact. Some exam
    * (Create/POST) Create a new comment on a post
    * (Delete) Delete existing comment
 * Create Post/Event Screen
-   * (Create/POST) Create a new post object
+   * (Create/POST) Create a new post object for posts and events
 * Profile Screen
    * (Read/GET) Query logged in user object
    * (Update/PUT) Update user profile image with organization image
