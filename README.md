@@ -86,7 +86,10 @@ An app for students in the greek life community on campus to interact. Some exam
 #### User
 | Property | Type | Description |
 | -------- | ---- | ----------- |
-|  |  |  |
+| objectId | String | unique id for the user |
+| organization | String | name of the fraternity or sorority the user is in |
+| userInfo | String | basic information about the user |
+| members | String | list of members in the same organization |
 
 #### Post
 | Property | Type | Description |
@@ -104,11 +107,25 @@ An app for students in the greek life community on campus to interact. Some exam
 
 #### Comments
 | Property | Type | Description |
-| -------- | ---- | ----------- |
-|  |  |  |
+| -------- | ---- | ----------- 
+| objectId | String | unique id for the user post (default field) |
+| author | Pointer to User | image author |
+| comment | String | comment left by another user |
 
 
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
+
+* Home Feed Screen
+   * (Read/GET) Query all posts where user is author and posts from the same organiztion
+   * (Create/POST) Create a new going/interested/maybe on a post for an event
+   * (Delete) Delete existing going/interested/maybe by changing option
+   * (Create/POST) Create a new comment on a post
+   * (Delete) Delete existing comment
+* Create Post/Event Screen
+   * (Create/POST) Create a new post object
+* Profile Screen
+   * (Read/GET) Query logged in user object
+   * (Update/PUT) Update user profile image with organization image
