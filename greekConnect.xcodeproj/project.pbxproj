@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E1B480AB24A43DF9ECDE94C /* Pods_greekConnect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABCD171A2B9B2C3FC53CAA86 /* Pods_greekConnect.framework */; };
 		3A39892F226FE675001EBBF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A39892E226FE675001EBBF6 /* AppDelegate.swift */; };
 		3A398931226FE675001EBBF6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A398930226FE675001EBBF6 /* ViewController.swift */; };
 		3A398934226FE675001EBBF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A398932226FE675001EBBF6 /* Main.storyboard */; };
@@ -14,6 +15,14 @@
 		3A398939226FE677001EBBF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A398937226FE677001EBBF6 /* LaunchScreen.storyboard */; };
 		3A398944226FE677001EBBF6 /* greekConnectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A398943226FE677001EBBF6 /* greekConnectTests.swift */; };
 		3A39894F226FE677001EBBF6 /* greekConnectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A39894E226FE677001EBBF6 /* greekConnectUITests.swift */; };
+		3A39895D226FE840001EBBF6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A39895C226FE840001EBBF6 /* GoogleService-Info.plist */; };
+		3A39895F226FF2D7001EBBF6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A39895E226FF2D7001EBBF6 /* SignUpViewController.swift */; };
+		3A52A8472272A5DB00E769A7 /* OrgPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A52A8462272A5DB00E769A7 /* OrgPickerViewController.swift */; };
+		3A78CB0F22768939009DF6DB /* userInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A78CB0E22768939009DF6DB /* userInfo.swift */; };
+		3A78CB112276A5C3009DF6DB /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A78CB102276A5C3009DF6DB /* InitialViewController.swift */; };
+		3A78CB152276AB9D009DF6DB /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A78CB142276AB9D009DF6DB /* HomeScreenViewController.swift */; };
+		B55AB57743488BC969C83BA5 /* Pods_greekConnectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE72EF60FDACCCFFACD657A /* Pods_greekConnectUITests.framework */; };
+		FA1ABB23E72FF371CFEC853A /* Pods_greekConnectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6157ED1438426C47C7CD02D4 /* Pods_greekConnectTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		088E82ADF773F96C008DBDCF /* Pods-greekConnectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-greekConnectUITests.release.xcconfig"; path = "Target Support Files/Pods-greekConnectUITests/Pods-greekConnectUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1BE72EF60FDACCCFFACD657A /* Pods_greekConnectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_greekConnectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A39892B226FE675001EBBF6 /* greekConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = greekConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A39892E226FE675001EBBF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A398930226FE675001EBBF6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +58,19 @@
 		3A39894A226FE677001EBBF6 /* greekConnectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = greekConnectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A39894E226FE677001EBBF6 /* greekConnectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = greekConnectUITests.swift; sourceTree = "<group>"; };
 		3A398950226FE677001EBBF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A39895C226FE840001EBBF6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3A39895E226FF2D7001EBBF6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		3A52A8462272A5DB00E769A7 /* OrgPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgPickerViewController.swift; sourceTree = "<group>"; };
+		3A78CB0E22768939009DF6DB /* userInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userInfo.swift; sourceTree = "<group>"; };
+		3A78CB102276A5C3009DF6DB /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		3A78CB142276AB9D009DF6DB /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
+		45E3899B1841AE6CED5E2718 /* Pods-greekConnect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-greekConnect.debug.xcconfig"; path = "Target Support Files/Pods-greekConnect/Pods-greekConnect.debug.xcconfig"; sourceTree = "<group>"; };
+		5A6C702EB17EB7A298C6F6E5 /* Pods-greekConnect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-greekConnect.release.xcconfig"; path = "Target Support Files/Pods-greekConnect/Pods-greekConnect.release.xcconfig"; sourceTree = "<group>"; };
+		5FC56BBA2D6DBF5E481EB0B2 /* Pods-greekConnectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-greekConnectUITests.debug.xcconfig"; path = "Target Support Files/Pods-greekConnectUITests/Pods-greekConnectUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		6157ED1438426C47C7CD02D4 /* Pods_greekConnectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_greekConnectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F022AFEB5130D38619C707B /* Pods-greekConnectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-greekConnectTests.release.xcconfig"; path = "Target Support Files/Pods-greekConnectTests/Pods-greekConnectTests.release.xcconfig"; sourceTree = "<group>"; };
+		ABCD171A2B9B2C3FC53CAA86 /* Pods_greekConnect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_greekConnect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3729B81B55DF0677B82E203 /* Pods-greekConnectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-greekConnectTests.debug.xcconfig"; path = "Target Support Files/Pods-greekConnectTests/Pods-greekConnectTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E1B480AB24A43DF9ECDE94C /* Pods_greekConnect.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA1ABB23E72FF371CFEC853A /* Pods_greekConnectTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B55AB57743488BC969C83BA5 /* Pods_greekConnectUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +108,8 @@
 				3A398942226FE677001EBBF6 /* greekConnectTests */,
 				3A39894D226FE677001EBBF6 /* greekConnectUITests */,
 				3A39892C226FE675001EBBF6 /* Products */,
+				C6BEEFD0452694B54DC9AF76 /* Pods */,
+				E0A97DEAFDB81C66A808A78D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,10 +128,16 @@
 			children = (
 				3A39892E226FE675001EBBF6 /* AppDelegate.swift */,
 				3A398930226FE675001EBBF6 /* ViewController.swift */,
+				3A78CB0E22768939009DF6DB /* userInfo.swift */,
+				3A52A8462272A5DB00E769A7 /* OrgPickerViewController.swift */,
 				3A398932226FE675001EBBF6 /* Main.storyboard */,
+				3A78CB102276A5C3009DF6DB /* InitialViewController.swift */,
 				3A398935226FE677001EBBF6 /* Assets.xcassets */,
 				3A398937226FE677001EBBF6 /* LaunchScreen.storyboard */,
 				3A39893A226FE677001EBBF6 /* Info.plist */,
+				3A39895C226FE840001EBBF6 /* GoogleService-Info.plist */,
+				3A39895E226FF2D7001EBBF6 /* SignUpViewController.swift */,
+				3A78CB142276AB9D009DF6DB /* HomeScreenViewController.swift */,
 			);
 			path = greekConnect;
 			sourceTree = "<group>";
@@ -125,6 +160,29 @@
 			path = greekConnectUITests;
 			sourceTree = "<group>";
 		};
+		C6BEEFD0452694B54DC9AF76 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				45E3899B1841AE6CED5E2718 /* Pods-greekConnect.debug.xcconfig */,
+				5A6C702EB17EB7A298C6F6E5 /* Pods-greekConnect.release.xcconfig */,
+				B3729B81B55DF0677B82E203 /* Pods-greekConnectTests.debug.xcconfig */,
+				6F022AFEB5130D38619C707B /* Pods-greekConnectTests.release.xcconfig */,
+				5FC56BBA2D6DBF5E481EB0B2 /* Pods-greekConnectUITests.debug.xcconfig */,
+				088E82ADF773F96C008DBDCF /* Pods-greekConnectUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E0A97DEAFDB81C66A808A78D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ABCD171A2B9B2C3FC53CAA86 /* Pods_greekConnect.framework */,
+				6157ED1438426C47C7CD02D4 /* Pods_greekConnectTests.framework */,
+				1BE72EF60FDACCCFFACD657A /* Pods_greekConnectUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +190,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A398953226FE677001EBBF6 /* Build configuration list for PBXNativeTarget "greekConnect" */;
 			buildPhases = (
+				7B1D202D59CA3886870DE792 /* [CP] Check Pods Manifest.lock */,
 				3A398927226FE675001EBBF6 /* Sources */,
 				3A398928226FE675001EBBF6 /* Frameworks */,
 				3A398929226FE675001EBBF6 /* Resources */,
+				906F4E6245903AD8CF1EA589 /* [CP] Embed Pods Frameworks */,
+				9906DBA07E3C9EF232E38997 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,6 +210,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A398956226FE677001EBBF6 /* Build configuration list for PBXNativeTarget "greekConnectTests" */;
 			buildPhases = (
+				116826472153495EEB6EF6FB /* [CP] Check Pods Manifest.lock */,
 				3A39893B226FE677001EBBF6 /* Sources */,
 				3A39893C226FE677001EBBF6 /* Frameworks */,
 				3A39893D226FE677001EBBF6 /* Resources */,
@@ -167,6 +229,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A398959226FE677001EBBF6 /* Build configuration list for PBXNativeTarget "greekConnectUITests" */;
 			buildPhases = (
+				A791D87B2E40CA25273DC8BE /* [CP] Check Pods Manifest.lock */,
 				3A398946226FE677001EBBF6 /* Sources */,
 				3A398947226FE677001EBBF6 /* Frameworks */,
 				3A398948226FE677001EBBF6 /* Resources */,
@@ -230,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A398939226FE677001EBBF6 /* LaunchScreen.storyboard in Resources */,
+				3A39895D226FE840001EBBF6 /* GoogleService-Info.plist in Resources */,
 				3A398936226FE677001EBBF6 /* Assets.xcassets in Resources */,
 				3A398934226FE675001EBBF6 /* Main.storyboard in Resources */,
 			);
@@ -251,13 +315,145 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		116826472153495EEB6EF6FB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-greekConnectTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7B1D202D59CA3886870DE792 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-greekConnect-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		906F4E6245903AD8CF1EA589 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-greekConnect/Pods-greekConnect-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/MessageInputBar/MessageInputBar.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageInputBar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-greekConnect/Pods-greekConnect-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9906DBA07E3C9EF232E38997 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-greekConnect/Pods-greekConnect-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseEmailAuthUI.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseEmailAuthUI.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-greekConnect/Pods-greekConnect-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A791D87B2E40CA25273DC8BE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-greekConnectUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3A398927226FE675001EBBF6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A39895F226FF2D7001EBBF6 /* SignUpViewController.swift in Sources */,
+				3A52A8472272A5DB00E769A7 /* OrgPickerViewController.swift in Sources */,
 				3A398931226FE675001EBBF6 /* ViewController.swift in Sources */,
+				3A78CB112276A5C3009DF6DB /* InitialViewController.swift in Sources */,
+				3A78CB0F22768939009DF6DB /* userInfo.swift in Sources */,
 				3A39892F226FE675001EBBF6 /* AppDelegate.swift in Sources */,
+				3A78CB152276AB9D009DF6DB /* HomeScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +626,7 @@
 		};
 		3A398954226FE677001EBBF6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 45E3899B1841AE6CED5E2718 /* Pods-greekConnect.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -447,6 +644,7 @@
 		};
 		3A398955226FE677001EBBF6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A6C702EB17EB7A298C6F6E5 /* Pods-greekConnect.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -464,6 +662,7 @@
 		};
 		3A398957226FE677001EBBF6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3729B81B55DF0677B82E203 /* Pods-greekConnectTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -484,6 +683,7 @@
 		};
 		3A398958226FE677001EBBF6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F022AFEB5130D38619C707B /* Pods-greekConnectTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -504,6 +704,7 @@
 		};
 		3A39895A226FE677001EBBF6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FC56BBA2D6DBF5E481EB0B2 /* Pods-greekConnectUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -523,6 +724,7 @@
 		};
 		3A39895B226FE677001EBBF6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 088E82ADF773F96C008DBDCF /* Pods-greekConnectUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>604888180273-r9v800avhlqer86peaferagah0a6o0i1.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.604888180273-r9v800avhlqer86peaferagah0a6o0i1</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAD1UHDc7eWfQZv-FYWM0kVJfY_dGrM4oQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>604888180273</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.blueface.greekConnect</string>
+	<key>PROJECT_ID</key>
+	<string>greekconnect-2a9ab</string>
+	<key>STORAGE_BUCKET</key>
+	<string>greekconnect-2a9ab.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:604888180273:ios:5f84ed7319eb0596</string>
+	<key>DATABASE_URL</key>
+	<string>https://greekconnect-2a9ab.firebaseio.com</string>
+</dict>
+</plist>
