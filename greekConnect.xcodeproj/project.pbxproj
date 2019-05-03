@@ -21,6 +21,9 @@
 		3A78CB0F22768939009DF6DB /* userInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A78CB0E22768939009DF6DB /* userInfo.swift */; };
 		3A78CB112276A5C3009DF6DB /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A78CB102276A5C3009DF6DB /* InitialViewController.swift */; };
 		3A78CB152276AB9D009DF6DB /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A78CB142276AB9D009DF6DB /* HomeScreenViewController.swift */; };
+		6450B43B227BF51200A45C21 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6450B43A227BF51200A45C21 /* ProfileViewController.swift */; };
+		6450B43D227BF51E00A45C21 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6450B43C227BF51E00A45C21 /* EventsViewController.swift */; };
+		6450B43F227BF54000A45C21 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6450B43E227BF54000A45C21 /* CreateEventViewController.swift */; };
 		B55AB57743488BC969C83BA5 /* Pods_greekConnectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE72EF60FDACCCFFACD657A /* Pods_greekConnectUITests.framework */; };
 		FA1ABB23E72FF371CFEC853A /* Pods_greekConnectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6157ED1438426C47C7CD02D4 /* Pods_greekConnectTests.framework */; };
 /* End PBXBuildFile section */
@@ -68,6 +71,9 @@
 		5A6C702EB17EB7A298C6F6E5 /* Pods-greekConnect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-greekConnect.release.xcconfig"; path = "Target Support Files/Pods-greekConnect/Pods-greekConnect.release.xcconfig"; sourceTree = "<group>"; };
 		5FC56BBA2D6DBF5E481EB0B2 /* Pods-greekConnectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-greekConnectUITests.debug.xcconfig"; path = "Target Support Files/Pods-greekConnectUITests/Pods-greekConnectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6157ED1438426C47C7CD02D4 /* Pods_greekConnectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_greekConnectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6450B43A227BF51200A45C21 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		6450B43C227BF51E00A45C21 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		6450B43E227BF54000A45C21 /* CreateEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		6F022AFEB5130D38619C707B /* Pods-greekConnectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-greekConnectTests.release.xcconfig"; path = "Target Support Files/Pods-greekConnectTests/Pods-greekConnectTests.release.xcconfig"; sourceTree = "<group>"; };
 		ABCD171A2B9B2C3FC53CAA86 /* Pods_greekConnect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_greekConnect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3729B81B55DF0677B82E203 /* Pods-greekConnectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-greekConnectTests.debug.xcconfig"; path = "Target Support Files/Pods-greekConnectTests/Pods-greekConnectTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -138,6 +144,9 @@
 				3A39895C226FE840001EBBF6 /* GoogleService-Info.plist */,
 				3A39895E226FF2D7001EBBF6 /* SignUpViewController.swift */,
 				3A78CB142276AB9D009DF6DB /* HomeScreenViewController.swift */,
+				6450B43A227BF51200A45C21 /* ProfileViewController.swift */,
+				6450B43C227BF51E00A45C21 /* EventsViewController.swift */,
+				6450B43E227BF54000A45C21 /* CreateEventViewController.swift */,
 			);
 			path = greekConnect;
 			sourceTree = "<group>";
@@ -453,7 +462,10 @@
 				3A78CB112276A5C3009DF6DB /* InitialViewController.swift in Sources */,
 				3A78CB0F22768939009DF6DB /* userInfo.swift in Sources */,
 				3A39892F226FE675001EBBF6 /* AppDelegate.swift in Sources */,
+				6450B43B227BF51200A45C21 /* ProfileViewController.swift in Sources */,
+				6450B43F227BF54000A45C21 /* CreateEventViewController.swift in Sources */,
 				3A78CB152276AB9D009DF6DB /* HomeScreenViewController.swift in Sources */,
+				6450B43D227BF51E00A45C21 /* EventsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
