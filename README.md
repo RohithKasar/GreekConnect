@@ -79,6 +79,9 @@ An app for students in the greek life community on campus to interact. Some exam
 
 ### [BONUS] Interactive Prototype
 
+## Current Working Demo
+<img src="http://g.recordit.co/xmCAdcQyTa.gif" width='' height='' alt='Video Walkthrough' />
+
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
