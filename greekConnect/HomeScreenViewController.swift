@@ -18,6 +18,7 @@ class HomeScreenViewController: UIViewController {
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var menuShadowView: UIView!
     
+    //@IBOutlet var feedView: UITableView!
     var menuShow = false
     
     override func viewDidLoad() {
