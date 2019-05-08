@@ -30,7 +30,7 @@ An app for students in the greek life community on campus to interact. Some exam
 **Required Must-have Stories**
 
 
-* User is able to log in with their organization, email, name, and password
+* [x] User is able to log in with their organization, email, name, and password
 * Members will be able to send invites to other organizations as a whole, which will result in a push notification for everyone in the other organization
 * Members will have the option to RSVP to events they have been invited to, as well as post events to a common feed.
 
@@ -78,6 +78,9 @@ An app for students in the greek life community on campus to interact. Some exam
 ### [BONUS] Digital Wireframes & Mockups
 
 ### [BONUS] Interactive Prototype
+
+#### Current Working Demo
+<img src="http://g.recordit.co/xmCAdcQyTa.gif" width='' height='' alt='Video Walkthrough' />
 
 ## Schema 
 [This section will be completed in Unit 9]
