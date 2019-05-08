@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "61B252B92C8E372B3B241CC421C563AA"
+               BlueprintIdentifier = "1A8513142C5C51703810787CB07285A5"
                BuildableName = "Pods_greekConnect.framework"
                BlueprintName = "Pods-greekConnect"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "61B252B92C8E372B3B241CC421C563AA"
+            BlueprintIdentifier = "1A8513142C5C51703810787CB07285A5"
             BuildableName = "Pods_greekConnect.framework"
             BlueprintName = "Pods-greekConnect"
             ReferencedContainer = "container:Pods.xcodeproj">

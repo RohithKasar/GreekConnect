@@ -12,7 +12,7 @@ target 'greekConnect' do
   pod "FirebaseUI/Auth"
   pod "FirebaseUI/Email"  
   pod "Firebase/Database"
-
+  pod "Firebase/Storage"
   target 'greekConnectTests' do
     inherit! :search_paths
     # Pods for testing
