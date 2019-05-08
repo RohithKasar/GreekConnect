@@ -59,6 +59,7 @@ class PublicizeViewController: UIViewController, UIImagePickerControllerDelegate
         }
         
         dismiss(animated: true, completion: nil)
+        //perform segue to homeviewcontroller
     }
     
     @IBAction func cancelClicked(_ sender: Any) {
@@ -90,6 +91,8 @@ class PublicizeViewController: UIViewController, UIImagePickerControllerDelegate
         dismiss(animated: true, completion: nil)
         
     }
+    
+    
     /*
     // MARK: - Navigation
 
