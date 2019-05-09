@@ -668,11 +668,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="blank-profile-pic" width="150" height="150"/>
+        <image name="blank-profile-pic" width="300" height="300"/>
         <image name="icons8-menu-50" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jlY-gQ-dLi"/>
-        <segue reference="oVC-B3-Msy"/>
+        <segue reference="k7g-Ol-GuT"/>
     </inferredMetricsTieBreakers>
 </document>

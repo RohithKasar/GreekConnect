@@ -15,8 +15,11 @@ class HomeScreenViewController: UIViewController {
     @IBOutlet weak var hamburgerButton: UIBarButtonItem!
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var leadingShadowConstraint: NSLayoutConstraint!
+    @IBOutlet weak var trailingShadowConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var menuShadowView: UIView!
+    @IBOutlet weak var profileImage: UIImageView!
     
     //@IBOutlet var feedView: UITableView!
     var menuShow = false
@@ -25,9 +28,14 @@ class HomeScreenViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        mainView.layer.masksToBounds = false
         mainView.layer.shadowOpacity = 0.9
         menuShadowView.backgroundColor = UIColor.black
         menuShadowView.layer.opacity = 0
+        
+        profileImage.image = UIImage(named: "blank-profile-pic.jpg")
+        profileImage.layer.cornerRadius = 32.5
+        profileImage.clipsToBounds = true
     }
 
     @IBAction func openSideMenu(_ sender: Any) {
@@ -36,6 +44,8 @@ class HomeScreenViewController: UIViewController {
             
             leadingConstraint.constant = 0
             trailingConstraint.constant = 0
+            leadingShadowConstraint.constant = 0
+            trailingShadowConstraint.constant = 0
             UIView.animate(withDuration: 0.2, animations: {
                 self.view.layoutIfNeeded()
             })
@@ -49,6 +59,8 @@ class HomeScreenViewController: UIViewController {
             
             leadingConstraint.constant = 154
             trailingConstraint.constant = 154
+            leadingShadowConstraint.constant = 154
+            trailingShadowConstraint.constant = 154
             UIView.animate(withDuration: 0.2, animations: {
                 self.view.layoutIfNeeded()
             })
@@ -73,13 +85,13 @@ class HomeScreenViewController: UIViewController {
     }
     
     @IBAction func signOut(_ sender: Any) {
-        do {
+        /*do {
             try Auth.auth().signOut()
             //performSegue(withIdentifier: "signOutSegue", sender: self)
         } catch let logoutError {
             print(logoutError)
-        }
-        //performSegue(withIdentifier: "signOutSegue", sender: self)
+        }*/
+        performSegue(withIdentifier: "signOutSegue", sender: self)
 
     }
     
