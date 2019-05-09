@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -80,6 +80,75 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TIg-Gm-db6">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VwY-6S-oSA">
+                                        <rect key="frame" x="46" y="135" width="51" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank-profile-pic" translatesAutoresizingMaskIntoConstraints="NO" id="ZS9-zZ-llI">
+                                        <rect key="frame" x="24" y="24" width="95" height="95"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="95" id="GNO-o3-Vx3"/>
+                                            <constraint firstAttribute="width" constant="95" id="PjK-Ld-z22"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50Y-Y9-qJs">
+                                        <rect key="frame" x="48" y="203" width="51" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <state key="normal" title="Profile">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="profileScreen:" destination="MlW-Ne-UqS" eventType="touchUpInside" id="hol-YB-4SI"/>
+                                            <segue destination="GZB-P6-ZLQ" kind="presentation" identifier="profileSegue" id="6De-Ug-vtq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NKy-Q5-NL3">
+                                        <rect key="frame" x="48" y="253" width="45" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <state key="normal" title="Event">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="eventsPage:" destination="MlW-Ne-UqS" eventType="touchUpInside" id="zOq-e7-kHy"/>
+                                            <segue destination="7RL-Cv-VwJ" kind="presentation" identifier="eventsSegue" id="czA-pd-Fnh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O90-rQ-xqW">
+                                        <rect key="frame" x="36" y="562" width="68" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <state key="normal" title="Sign Out">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="signOut:" destination="MlW-Ne-UqS" eventType="touchUpInside" id="dNV-gy-Zej"/>
+                                            <segue destination="BYZ-38-t0r" kind="presentation" identifier="signOutSegue" id="k7g-Ol-GuT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="NKy-Q5-NL3" firstAttribute="top" secondItem="50Y-Y9-qJs" secondAttribute="bottom" constant="17" id="09J-Hz-wqp"/>
+                                    <constraint firstItem="ZS9-zZ-llI" firstAttribute="leading" secondItem="TIg-Gm-db6" secondAttribute="leading" constant="24" id="1bI-jU-wnB"/>
+                                    <constraint firstItem="VwY-6S-oSA" firstAttribute="leading" secondItem="TIg-Gm-db6" secondAttribute="leading" constant="46" id="CyO-4a-Mpj"/>
+                                    <constraint firstItem="ZS9-zZ-llI" firstAttribute="top" secondItem="TIg-Gm-db6" secondAttribute="top" constant="24" id="FaT-cN-szH"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZS9-zZ-llI" secondAttribute="trailing" constant="256" id="KDF-kR-2Bn"/>
+                                    <constraint firstItem="VwY-6S-oSA" firstAttribute="top" secondItem="ZS9-zZ-llI" secondAttribute="bottom" constant="16" id="N3m-LA-dn3"/>
+                                    <constraint firstItem="50Y-Y9-qJs" firstAttribute="leading" secondItem="TIg-Gm-db6" secondAttribute="leading" constant="48" id="P6Y-0d-AS5"/>
+                                    <constraint firstAttribute="trailing" secondItem="50Y-Y9-qJs" secondAttribute="trailing" constant="276" id="SFP-9s-qXt"/>
+                                    <constraint firstItem="NKy-Q5-NL3" firstAttribute="leading" secondItem="TIg-Gm-db6" secondAttribute="leading" constant="48" id="U3c-jw-XOq"/>
+                                    <constraint firstAttribute="trailing" secondItem="NKy-Q5-NL3" secondAttribute="trailing" constant="282" id="XMa-iX-RPd"/>
+                                    <constraint firstAttribute="trailing" secondItem="VwY-6S-oSA" secondAttribute="trailing" constant="278" id="Z22-SL-mT8"/>
+                                    <constraint firstItem="O90-rQ-xqW" firstAttribute="top" secondItem="NKy-Q5-NL3" secondAttribute="bottom" constant="276" id="gR3-eJ-zBn"/>
+                                    <constraint firstItem="50Y-Y9-qJs" firstAttribute="top" secondItem="VwY-6S-oSA" secondAttribute="bottom" constant="44" id="mXa-7u-2ww"/>
+                                    <constraint firstAttribute="trailing" secondItem="O90-rQ-xqW" secondAttribute="trailing" constant="271" id="nQq-xO-GC1"/>
+                                    <constraint firstItem="O90-rQ-xqW" firstAttribute="leading" secondItem="TIg-Gm-db6" secondAttribute="leading" constant="36" id="yeh-5K-6u3"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p6T-ux-bar">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -161,13 +230,25 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZVT-pm-pNE">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="TIg-Gm-db6" firstAttribute="top" secondItem="dTy-pI-xoB" secondAttribute="top" id="3Uz-bX-qLK"/>
+                            <constraint firstItem="p6T-ux-bar" firstAttribute="bottom" secondItem="dTy-pI-xoB" secondAttribute="bottom" id="6fF-Gh-HCb"/>
+                            <constraint firstItem="TIg-Gm-db6" firstAttribute="leading" secondItem="dTy-pI-xoB" secondAttribute="leading" id="6he-IG-Ss7"/>
+                            <constraint firstItem="TIg-Gm-db6" firstAttribute="bottom" secondItem="dTy-pI-xoB" secondAttribute="bottom" id="AD1-Gk-SgK"/>
                             <constraint firstItem="p6T-ux-bar" firstAttribute="trailing" secondItem="dTy-pI-xoB" secondAttribute="trailing" id="IhB-o9-Lje"/>
-                            <constraint firstItem="p6T-ux-bar" firstAttribute="bottom" secondItem="dTy-pI-xoB" secondAttribute="bottom" id="lyQ-I9-8SJ"/>
+                            <constraint firstItem="TIg-Gm-db6" firstAttribute="trailing" secondItem="dTy-pI-xoB" secondAttribute="trailing" id="O1I-gR-mqQ"/>
+                            <constraint firstItem="ZVT-pm-pNE" firstAttribute="leading" secondItem="dTy-pI-xoB" secondAttribute="leading" id="QUZ-ia-dzE"/>
+                            <constraint firstItem="ZVT-pm-pNE" firstAttribute="bottom" secondItem="dTy-pI-xoB" secondAttribute="bottom" id="W1R-S0-hbG"/>
+                            <constraint firstItem="ZVT-pm-pNE" firstAttribute="top" secondItem="dTy-pI-xoB" secondAttribute="top" id="Wyi-dx-IQh"/>
+                            <constraint firstItem="ZVT-pm-pNE" firstAttribute="trailing" secondItem="dTy-pI-xoB" secondAttribute="trailing" id="daG-R4-R7r"/>
                             <constraint firstItem="p6T-ux-bar" firstAttribute="top" secondItem="dTy-pI-xoB" secondAttribute="top" id="peN-la-W3R"/>
-                            <constraint firstItem="p6T-ux-bar" firstAttribute="leading" secondItem="dTy-pI-xoB" secondAttribute="leading" id="xh2-aU-f5n"/>
+                            <constraint firstItem="p6T-ux-bar" firstAttribute="leading" secondItem="dTy-pI-xoB" secondAttribute="leading" id="uAl-lv-507"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dTy-pI-xoB"/>
                     </view>
@@ -188,6 +269,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="hamburgerButton" destination="mkN-dQ-0tz" id="hX2-hc-L3s"/>
+                        <outlet property="leadingConstraint" destination="uAl-lv-507" id="zj1-zo-3bq"/>
+                        <outlet property="leadingShadowConstraint" destination="QUZ-ia-dzE" id="Z3s-ud-Rz0"/>
+                        <outlet property="mainView" destination="p6T-ux-bar" id="o5w-aG-5Of"/>
+                        <outlet property="menuShadowView" destination="ZVT-pm-pNE" id="VIX-8p-Lq0"/>
+                        <outlet property="profileImage" destination="ZS9-zZ-llI" id="3I6-Kc-fWb"/>
+                        <outlet property="trailingConstraint" destination="IhB-o9-Lje" id="VMv-Mz-Ja2"/>
+                        <outlet property="trailingShadowConstraint" destination="daG-R4-R7r" id="zjG-7P-Wd9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lpK-Wb-5zs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -580,9 +668,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icons8-menu-50" width="37.5" height="37.5"/>
+        <image name="blank-profile-pic" width="150" height="150"/>
+        <image name="icons8-menu-50" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jlY-gQ-dLi"/>
+        <segue reference="oVC-B3-Msy"/>
     </inferredMetricsTieBreakers>
 </document>
