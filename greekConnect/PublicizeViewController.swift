@@ -36,7 +36,8 @@ class PublicizeViewController: UIViewController, UIImagePickerControllerDelegate
         e.time = timeField.text ?? "nil"
         e.description = descriptionView.text
         
-        self.ref?.child("Events").child(e.name).setValue(["location": e.location, "time": e.time, "description":e.description])
+        //self.ref?.child("Events").child(e.name).setValue(["location": e.location, "time": e.time, "description":e.description])
+        self.ref?.child("Events").child(e.name).setValue(["location": e.location, "time": e.time, "description":e.description, "poster":User.globalVariable.id])
         
         let storageRef = Storage.storage().reference().child("Event/\(e.name)")
         

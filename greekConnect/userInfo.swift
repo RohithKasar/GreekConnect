@@ -11,6 +11,7 @@ import Foundation
 class User {
     struct globalVariable {
         static var id = String()
+        static var email = String()
     }
 //    var id: String
 //    init(id: String) {

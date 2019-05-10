@@ -12,10 +12,18 @@ import FirebaseDatabase
 class OrgPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     var org = ""
     var id = User.globalVariable.id
+    var email = User.globalVariable.email
     var ref:DatabaseReference?
     var organization = ["placeholder"]
-    var fratList = ["", "Alpha Epsilon Pi", "Alpha Lamda Mu", "Beta Theta Pi", "Kappa Sigma", "Lambda Chi Alpha"]
-    var sorList = ["", "Sorority 1", "Sorority 2", "Sorority 3"]
+    var fratList = ["", "Alpha Epsilon Omega, Eta","Alpha Epsilon Pi", "Alpha Lamda Mu", "Beta Theta Pi", "Delta Lambda Phi",
+                    "Gamma Zeta Alpha", "Kappa Sigma", "Lambda Chi Alpha", "Lambda Theta Phi", "Lambda Phi Epsilon",
+                    "Phi Delta Theta", "Phi Gamma Delta", "Pi Kappa Alpha", "Pi Kappa Phi", "Nu Alpha Kappa",
+                    "Phi Iota Alpha", "Pi Alpha Phi", "Psi Chi Omega", "Sigma Alpha Epsilon", "Sigma Alpha Mu",
+                    "Sigma Chi", "Sigma Nu", "Sigma Phi Epsilon", "Tau Kappa Epsilon", "Triangle"]
+    var sorList = ["", "Alpha Chi Omega", "Alpha Epsilon Phi", "Alpha Gamma Alpha", "Alpha Omicron Pi", "Alpha Phi",
+                   "Chi Omega", "Delta Delta Delta", "Delta Gamma", "Kappa Alpha Theta", "Kappa Kappa Gamma",
+                   "Kappa Zeta Phi", "Lambda Theta Alpha", "Lambda Theta Nu", "Phi Lambda Rho", "Phi Sigma Rho",
+                   "Pi Beta Phi", "Sigma Alpha Zeta", "Sigma Kappa", "Sigma Omicron Pi", "Sigma Pi Alpha"]
     var picker = UIPickerView()
     var test = ""
     
@@ -63,7 +71,7 @@ class OrgPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     
     @objc func donePressed(sender: UIBarButtonItem) {
-        self.ref?.child("Organizations").child(id).setValue(orgTextField.text ?? "yeet")
+        self.ref?.child("Organizations").child(orgTextField.text ?? "yeet").setValue([id:email])
         orgTextField.resignFirstResponder()
         performSegue(withIdentifier: "firstLogInSegue", sender: self)
     }

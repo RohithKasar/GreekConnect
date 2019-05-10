@@ -47,16 +47,21 @@ extension ViewController: FUIAuthDelegate {
             return
         }
         
+
         User.globalVariable.id = authUI.auth?.currentUser?.uid ?? "User"
-        self.ref?.child("Users").child(User.globalVariable.id).setValue(authDataResult?.user.displayName ?? "Name")
+        User.globalVariable.email = authUI.auth?.currentUser?.email ?? "email"
+        self.ref?.child("Users").child(User.globalVariable.id).setValue([authDataResult?.user.displayName ?? "Name": User.globalVariable.email]);
         
         if (authDataResult?.additionalUserInfo?.isNewUser ?? false) {
-
+            
             performSegue(withIdentifier: "orgPickSegue", sender: self)
             
         } else {
             performSegue(withIdentifier: "logInSegue", sender: self)
         }
+        
+        
+        
     }
 
     
