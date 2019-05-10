@@ -14,7 +14,7 @@ class OrgPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     var id = User.globalVariable.id
     var ref:DatabaseReference?
     var organization = ["placeholder"]
-    var fratList = ["", "Pi Alpha Phi", "Lamda Phi Epsilon", "Pi Kappa Phi"]
+    var fratList = ["", "Alpha Epsilon Pi", "Alpha Lamda Mu", "Beta Theta Pi", "Kappa Sigma", "Lambda Chi Alpha"]
     var sorList = ["", "Sorority 1", "Sorority 2", "Sorority 3"]
     var picker = UIPickerView()
     var test = ""

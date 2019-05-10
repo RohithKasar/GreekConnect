@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-        
+        setRootViewController()
         return true
     }
 
@@ -44,6 +44,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func setRootViewController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if Auth.auth().currentUser != nil {
+            let vc = storyboard.instantiateViewController(withIdentifier: "homeVC")
+            UIApplication.shared.windows.first?.rootViewController = vc
+        } else {
+            let vc = storyboard.instantiateViewController(withIdentifier: "loginVC")
+            UIApplication.shared.windows.first?.rootViewController = vc
+        }
+    }
 
 }
 

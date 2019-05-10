@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import FirebaseUI
+import Firebase
+//import FirebaseUI
 //import FirebaseAuth
 
 class HomeScreenViewController: UIViewController {
@@ -85,13 +86,13 @@ class HomeScreenViewController: UIViewController {
     }
     
     @IBAction func signOut(_ sender: Any) {
-        /*do {
+        do {
             try Auth.auth().signOut()
-            //performSegue(withIdentifier: "signOutSegue", sender: self)
-        } catch let logoutError {
-            print(logoutError)
-        }*/
-        performSegue(withIdentifier: "signOutSegue", sender: self)
+            performSegue(withIdentifier: "signOutSegue", sender: self)
+        } catch {
+            print(error)
+        }
+        //performSegue(withIdentifier: "signOutSegue", sender: self)
 
     }
     
