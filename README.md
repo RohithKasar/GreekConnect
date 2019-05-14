@@ -85,6 +85,7 @@ An app for students in the greek life community on campus to interact. Some exam
 #### Current Working Demo
 ##### Milestone 1
 <img src="http://g.recordit.co/xmCAdcQyTa.gif" width='' height='' alt='Video Walkthrough' />
+
 ##### Milestone 2
 <img src="http://g.recordit.co/KFqiONUA1Z.gif" width='' height='' alt='Video Walkthrough' />
 
