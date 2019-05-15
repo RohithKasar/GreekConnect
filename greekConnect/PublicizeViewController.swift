@@ -36,11 +36,15 @@ class PublicizeViewController: UIViewController, UIImagePickerControllerDelegate
         guard let location = locationField.text else { return }
         guard let time = timeField.text else { return }
         guard let description = descriptionView.text else { return }
-        let posterUid = User.globalVariable.id
+        let id = DummyUser.globalVariable.id
         
-        Event(name: nameField , location: location, time: time, description: description, posterUid: posterUid)
         
-        DataService.instance.pushEvent(name: nameField, location: location, time: time, description: description, posterUid: posterUid) { (isComplete) in
+        
+        //_ = Event(name: nameField , location: location, time: time, description: description, poster: posterName)
+        
+        
+        
+        DataService.instance.pushEvent(name: nameField, location: location, time: time, description: description, id: id) { (isComplete) in
             if isComplete {
                 print("successfully updated an event to firebase")
                 
@@ -54,12 +58,12 @@ class PublicizeViewController: UIViewController, UIImagePickerControllerDelegate
         
         //self.ref?.child()
         
-        /*let storageRef = Storage.storage().reference().child("Event/\(e.name)")
+        let storageRef = Storage.storage().reference().child("Event/\(nameField)")
         
         let imageData = self.imageView.image?.jpegData(compressionQuality: 0.8)
         
-        let uploadTask = storageRef.putData(imageData!, metadata: nil) { (metadata, error) in
-            guard let metadata = metadata else {
+        _ = storageRef.putData(imageData!, metadata: nil) { (metadata, error) in
+            guard metadata != nil else {
                 // Uh-oh, an error occurred!
                 return
             }
@@ -72,10 +76,11 @@ class PublicizeViewController: UIViewController, UIImagePickerControllerDelegate
                     return
                 }
             }
-        }*/
+        }
         
-        dismiss(animated: true, completion: nil)
+        //dismiss(animated: true, completion: nil)
         //perform segue to homeviewcontroller
+        performSegue(withIdentifier: "PostPublish", sender: self)
     }
     
     @IBAction func cancelClicked(_ sender: Any) {

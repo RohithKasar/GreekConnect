@@ -11,8 +11,8 @@ import FirebaseDatabase
 
 class OrgPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     var org = ""
-    var id = User.globalVariable.id
-    var email = User.globalVariable.email
+    var id = DummyUser.globalVariable.id
+    var email = DummyUser.globalVariable.email
     var ref:DatabaseReference?
     var organization = ["placeholder"]
     var fratList = ["", "Alpha Epsilon Omega, Eta","Alpha Epsilon Pi", "Alpha Lamda Mu", "Beta Theta Pi", "Delta Lambda Phi",
@@ -71,7 +71,17 @@ class OrgPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     
     @objc func donePressed(sender: UIBarButtonItem) {
-        self.ref?.child("Organizations").child(orgTextField.text ?? "yeet").setValue([id:email])
+        //User.globalVariable.org = orgTextField.text ?? "yeet"
+        
+        //FIX THESE TWO LINES
+        
+        DummyUser.globalVariable.org = orgTextField.text ?? "mooted"
+        let org = orgTextField.text ?? "mooted"
+        self.ref?.child("Organizations").child(org).setValue([id:email])
+        
+        //somehow update existing user?
+        
+        
         orgTextField.resignFirstResponder()
         performSegue(withIdentifier: "firstLogInSegue", sender: self)
     }

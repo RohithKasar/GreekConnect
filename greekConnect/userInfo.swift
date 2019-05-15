@@ -8,13 +8,16 @@
 
 import Foundation
 
-class User {
+class DummyUser {
     struct globalVariable {
         static var id = String()
         static var email = String()
+        static var name = String()
+        static var org = String()
     }
 //    var id: String
 //    init(id: String) {
 //        self.id = id
 //    }
 }
+

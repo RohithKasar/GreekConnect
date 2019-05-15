@@ -11,7 +11,9 @@ import Firebase
 //import FirebaseUI
 import FirebaseAuth
 
-class HomeScreenViewController: UIViewController {
+class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    
     
     @IBOutlet weak var hamburgerButton: UIBarButtonItem!
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
@@ -22,16 +24,19 @@ class HomeScreenViewController: UIViewController {
     @IBOutlet weak var menuShadowView: UIView!
     @IBOutlet weak var profileImage: UIImageView!
     
-    //@IBOutlet var feedView: UITableView!
+
+    @IBOutlet weak var tableView: UITableView!
     
     
     var events = [Event]()
+    var users = [User]()
     
     var menuShow = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.delegate = self
+        tableView.dataSource = self
         // Do any additional setup after loading the view.
         mainView.layer.masksToBounds = false
         mainView.layer.shadowOpacity = 0.9
@@ -98,6 +103,55 @@ class HomeScreenViewController: UIViewController {
         }
         //performSegue(withIdentifier: "signOutSegue", sender: self)
 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        DataService.instance.fetchEvents(handler: { (paramEvents) in
+            
+            self.events = paramEvents
+            self.tableView.reloadData()
+            
+    
+        })
+        
+        DataService.instance.fetchUser { (paramUsers) in
+            self.users = paramUsers
+            self.tableView.reloadData() 
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return events.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
+        
+        
+        
+        let event = events[indexPath.row]
+        cell.eventNameLabel.text = event.name
+        cell.descriptionLabel.text = event.description
+        cell.locationLabel.text = event.location
+        cell.timeLabel.text = event.time
+        
+        let key = event.poster
+        //find the key in users and extract their username and org
+        for user in users {
+            if (user.id == key) {
+                cell.userNameLabel.text = user.name
+                cell.orgNameLabel.text = user.org
+            }
+        }
+        
+        return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 500
     }
     
     
