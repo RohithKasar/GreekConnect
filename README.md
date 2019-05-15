@@ -31,6 +31,9 @@ An app for students in the greek life community on campus to interact. Some exam
 
 
 * [x] User is able to log in with their organization, email, name, and password
+* [x] Side out menu to navigate to events and users profile 
+* [x] login persistence and logging out of database works, and creating the organized databases for each page
+* [x] designs and logos and launch screen created
 * Members will be able to send invites to other organizations as a whole, which will result in a push notification for everyone in the other organization
 * Members will have the option to RSVP to events they have been invited to, as well as post events to a common feed.
 
@@ -80,7 +83,11 @@ An app for students in the greek life community on campus to interact. Some exam
 ### [BONUS] Interactive Prototype
 
 #### Current Working Demo
+##### Milestone 1
 <img src="http://g.recordit.co/xmCAdcQyTa.gif" width='' height='' alt='Video Walkthrough' />
+
+##### Milestone 2
+<img src="http://g.recordit.co/KFqiONUA1Z.gif" width='' height='' alt='Video Walkthrough' />
 
 ## Schema 
 [This section will be completed in Unit 9]
