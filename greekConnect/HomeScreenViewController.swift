@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 //import FirebaseUI
-//import FirebaseAuth
+import FirebaseAuth
 
 class HomeScreenViewController: UIViewController {
     
@@ -23,6 +23,10 @@ class HomeScreenViewController: UIViewController {
     @IBOutlet weak var profileImage: UIImageView!
     
     //@IBOutlet var feedView: UITableView!
+    
+    
+    var events = [Event]()
+    
     var menuShow = false
     
     override func viewDidLoad() {
@@ -95,6 +99,8 @@ class HomeScreenViewController: UIViewController {
         //performSegue(withIdentifier: "signOutSegue", sender: self)
 
     }
+    
+    
     
     /*
     // MARK: - Navigation

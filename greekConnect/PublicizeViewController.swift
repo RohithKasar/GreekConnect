@@ -30,16 +30,31 @@ class PublicizeViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     @IBAction func publishClicked(_ sender: Any) {
-        let e = Event()
-        e.name = nameField.text ?? "nil"
-        e.location = locationField.text ?? "nil"
-        e.time = timeField.text ?? "nil"
-        e.description = descriptionView.text
         
-        //self.ref?.child("Events").child(e.name).setValue(["location": e.location, "time": e.time, "description":e.description])
-        self.ref?.child("Events").child(e.name).setValue(["location": e.location, "time": e.time, "description":e.description, "poster":User.globalVariable.id])
         
-        let storageRef = Storage.storage().reference().child("Event/\(e.name)")
+        guard let nameField = nameField.text else { return }
+        guard let location = locationField.text else { return }
+        guard let time = timeField.text else { return }
+        guard let description = descriptionView.text else { return }
+        let posterUid = User.globalVariable.id
+        
+        Event(name: nameField , location: location, time: time, description: description, posterUid: posterUid)
+        
+        DataService.instance.pushEvent(name: nameField, location: location, time: time, description: description, posterUid: posterUid) { (isComplete) in
+            if isComplete {
+                print("successfully updated an event to firebase")
+                
+            } else {
+                print("there was an error uploading an event to firebase")
+            }
+        }
+        
+        
+        //self.ref?.child("events").child(e.name).setValue(["location": e.location, "time": e.time, "description":e.description, "poster":User.globalVariable.id])
+        
+        //self.ref?.child()
+        
+        /*let storageRef = Storage.storage().reference().child("Event/\(e.name)")
         
         let imageData = self.imageView.image?.jpegData(compressionQuality: 0.8)
         
@@ -57,7 +72,7 @@ class PublicizeViewController: UIViewController, UIImagePickerControllerDelegate
                     return
                 }
             }
-        }
+        }*/
         
         dismiss(animated: true, completion: nil)
         //perform segue to homeviewcontroller

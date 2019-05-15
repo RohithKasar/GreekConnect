@@ -8,6 +8,7 @@ target 'greekConnect' do
   # Pods for greekConnect
   pod "AlamofireImage"
   pod "MessageInputBar"
+  
   pod "Firebase/Core"
   pod "FirebaseUI/Auth"
   pod "FirebaseUI/Email"  

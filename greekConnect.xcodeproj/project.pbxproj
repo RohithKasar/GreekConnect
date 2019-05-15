@@ -19,6 +19,7 @@
 		3A39895F226FF2D7001EBBF6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A39895E226FF2D7001EBBF6 /* SignUpViewController.swift */; };
 		3A52A8472272A5DB00E769A7 /* OrgPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A52A8462272A5DB00E769A7 /* OrgPickerViewController.swift */; };
 		3A61F4682282701200611E2C /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A61F4672282701200611E2C /* PostCell.swift */; };
+		3A62544B22851452003D92E7 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62544A22851452003D92E7 /* DataService.swift */; };
 		3A78CB0F22768939009DF6DB /* userInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A78CB0E22768939009DF6DB /* userInfo.swift */; };
 		3A78CB112276A5C3009DF6DB /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A78CB102276A5C3009DF6DB /* InitialViewController.swift */; };
 		3A78CB152276AB9D009DF6DB /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A78CB142276AB9D009DF6DB /* HomeScreenViewController.swift */; };
@@ -68,6 +69,7 @@
 		3A39895E226FF2D7001EBBF6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3A52A8462272A5DB00E769A7 /* OrgPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgPickerViewController.swift; sourceTree = "<group>"; };
 		3A61F4672282701200611E2C /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		3A62544A22851452003D92E7 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		3A78CB0E22768939009DF6DB /* userInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userInfo.swift; sourceTree = "<group>"; };
 		3A78CB102276A5C3009DF6DB /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		3A78CB142276AB9D009DF6DB /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				6450B43C227BF51E00A45C21 /* EventsViewController.swift */,
 				6450B43E227BF54000A45C21 /* CreateEventViewController.swift */,
 				3AC346EB2281077F002B0173 /* Event.swift */,
+				3A62544A22851452003D92E7 /* DataService.swift */,
 			);
 			path = greekConnect;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A39895F226FF2D7001EBBF6 /* SignUpViewController.swift in Sources */,
+				3A62544B22851452003D92E7 /* DataService.swift in Sources */,
 				3A52A8472272A5DB00E769A7 /* OrgPickerViewController.swift in Sources */,
 				3A61F4682282701200611E2C /* PostCell.swift in Sources */,
 				3A398931226FE675001EBBF6 /* ViewController.swift in Sources */,
