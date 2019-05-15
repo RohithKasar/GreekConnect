@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1E1B480AB24A43DF9ECDE94C /* Pods_greekConnect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABCD171A2B9B2C3FC53CAA86 /* Pods_greekConnect.framework */; };
+		3A038D75228BA0A9001AE44F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A038D74228BA0A9001AE44F /* Main.storyboard */; };
 		3A39892F226FE675001EBBF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A39892E226FE675001EBBF6 /* AppDelegate.swift */; };
 		3A398931226FE675001EBBF6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A398930226FE675001EBBF6 /* ViewController.swift */; };
-		3A398934226FE675001EBBF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A398932226FE675001EBBF6 /* Main.storyboard */; };
 		3A398936226FE677001EBBF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A398935226FE677001EBBF6 /* Assets.xcassets */; };
 		3A398939226FE677001EBBF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A398937226FE677001EBBF6 /* LaunchScreen.storyboard */; };
 		3A398944226FE677001EBBF6 /* greekConnectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A398943226FE677001EBBF6 /* greekConnectTests.swift */; };
@@ -52,10 +52,10 @@
 /* Begin PBXFileReference section */
 		088E82ADF773F96C008DBDCF /* Pods-greekConnectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-greekConnectUITests.release.xcconfig"; path = "Target Support Files/Pods-greekConnectUITests/Pods-greekConnectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1BE72EF60FDACCCFFACD657A /* Pods_greekConnectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_greekConnectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A038D74228BA0A9001AE44F /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3A39892B226FE675001EBBF6 /* greekConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = greekConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A39892E226FE675001EBBF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A398930226FE675001EBBF6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		3A398933226FE675001EBBF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A398935226FE677001EBBF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A398938226FE677001EBBF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A39893A226FE677001EBBF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -144,7 +144,6 @@
 				3A398930226FE675001EBBF6 /* ViewController.swift */,
 				3A78CB0E22768939009DF6DB /* userInfo.swift */,
 				3A52A8462272A5DB00E769A7 /* OrgPickerViewController.swift */,
-				3A398932226FE675001EBBF6 /* Main.storyboard */,
 				3A61F4672282701200611E2C /* PostCell.swift */,
 				3AC346E72281052F002B0173 /* PublicizeViewController.swift */,
 				3A78CB102276A5C3009DF6DB /* InitialViewController.swift */,
@@ -159,6 +158,7 @@
 				6450B43E227BF54000A45C21 /* CreateEventViewController.swift */,
 				3AC346EB2281077F002B0173 /* Event.swift */,
 				3A62544A22851452003D92E7 /* DataService.swift */,
+				3A038D74228BA0A9001AE44F /* Main.storyboard */,
 			);
 			path = greekConnect;
 			sourceTree = "<group>";
@@ -316,7 +316,7 @@
 				3A398939226FE677001EBBF6 /* LaunchScreen.storyboard in Resources */,
 				3A39895D226FE840001EBBF6 /* GoogleService-Info.plist in Resources */,
 				3A398936226FE677001EBBF6 /* Assets.xcassets in Resources */,
-				3A398934226FE675001EBBF6 /* Main.storyboard in Resources */,
+				3A038D75228BA0A9001AE44F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,14 +517,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3A398932226FE675001EBBF6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3A398933226FE675001EBBF6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3A398937226FE677001EBBF6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
