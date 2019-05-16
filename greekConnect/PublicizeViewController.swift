@@ -29,6 +29,11 @@ class PublicizeViewController: UIViewController, UIImagePickerControllerDelegate
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
     @IBAction func publishClicked(_ sender: Any) {
         
         
@@ -36,7 +41,9 @@ class PublicizeViewController: UIViewController, UIImagePickerControllerDelegate
         guard let location = locationField.text else { return }
         guard let time = timeField.text else { return }
         guard let description = descriptionView.text else { return }
-        let id = DummyUser.globalVariable.id
+        //let id = DummyUser.globalVariable.id
+        let id = Firebase.Auth.auth().currentUser?.uid ?? "bleep"
+        
         
         
         

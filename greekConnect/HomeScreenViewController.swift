@@ -20,7 +20,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var leadingShadowConstraint: NSLayoutConstraint!
     @IBOutlet weak var trailingShadowConstraint: NSLayoutConstraint!
-    @IBOutlet weak var mainView: UIView!
+   // @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var menuShadowView: UIView!
     @IBOutlet weak var profileImage: UIImageView!
     
@@ -38,14 +38,20 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
-        mainView.layer.masksToBounds = false
-        mainView.layer.shadowOpacity = 0.9
+        tableView.layer.masksToBounds = false
+        tableView.layer.shadowOpacity = 0.9
         menuShadowView.backgroundColor = UIColor.black
         menuShadowView.layer.opacity = 0
         
         profileImage.image = UIImage(named: "blank-profile-pic.jpg")
         profileImage.layer.cornerRadius = 32.5
         profileImage.clipsToBounds = true
+
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
     }
 
     @IBAction func openSideMenu(_ sender: Any) {
@@ -145,6 +151,10 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
                 cell.orgNameLabel.text = user.org
             }
         }
+        
+        cell.profileImage.image = UIImage(named: "blank-profile-pic.jpg")
+        cell.profileImage.layer.cornerRadius = 19.5
+        cell.profileImage.clipsToBounds = true
         
         return cell
     }

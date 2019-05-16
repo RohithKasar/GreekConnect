@@ -23,6 +23,21 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    /*@IBAction func logInPressed(_ sender: Any) {
+        let authUI = FUIAuth.defaultAuthUI()
+        
+        guard authUI != nil else {
+            return
+        }
+        
+        authUI?.delegate = self
+        authUI?.providers = [FUIEmailAuth()]
+        
+        let authViewController = authUI!.authViewController()
+        
+        present(authViewController, animated: true, completion: nil)
+    }*/
+
     @IBAction func logInPressed(_ sender: Any) {
         let authUI = FUIAuth.defaultAuthUI()
         
@@ -37,7 +52,6 @@ class ViewController: UIViewController {
         
         present(authViewController, animated: true, completion: nil)
     }
-
     
 }
 
