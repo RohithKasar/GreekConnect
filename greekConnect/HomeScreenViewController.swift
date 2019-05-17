@@ -24,7 +24,10 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var menuShadowView: UIView!
     @IBOutlet weak var profileImage: UIImageView!
     
-
+    
+//    @IBOutlet weak var goingLabel: UILabel!
+//    @IBOutlet weak var interestedLabel: UILabel!
+    
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -46,6 +49,8 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         profileImage.image = UIImage(named: "blank-profile-pic.jpg")
         profileImage.layer.cornerRadius = 32.5
         profileImage.clipsToBounds = true
+        //goingLabel.isHidden = true
+        //interestedLabel.isHidden = true
 
         
     }
@@ -139,9 +144,9 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         
         let event = events[indexPath.row]
         cell.eventNameLabel.text = event.name
-        cell.descriptionLabel.text = event.description
-        cell.locationLabel.text = event.location
-        cell.timeLabel.text = event.time
+        cell.descriptionLabel.text = "Description " + event.description
+        cell.locationLabel.text = "Where: " + event.location
+        cell.timeLabel.text = "When: " + event.time
         
         let key = event.poster
         //find the key in users and extract their username and org
@@ -149,6 +154,15 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
             if (user.id == key) {
                 cell.userNameLabel.text = user.name
                 cell.orgNameLabel.text = user.org
+            }
+        }
+        
+        let pathReference = Storage.storage().reference(withPath: "Event/\(event.name)")
+        pathReference.getData(maxSize: 1*1024*1024) { (data, error) in
+            if error != nil {
+                print("error occurred pulling image from storage")
+            } else {
+                cell.eventImage.image = UIImage(data: data!)
             }
         }
         
@@ -165,7 +179,36 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     
-    
+//    @IBAction func goingPressed(_ sender: Any) {
+//        /*goingLabel.isHidden = false
+//        interestedLabel.isHidden = false
+//        goingButtonOutlet.isHidden = true
+//        goingButtonOutlet.isEnabled = false
+//        interestedButtonOutlet.isHidden = true
+//        interestedButtonOutlet.isEnabled = false
+//        notGoingButtonOutlet.isHidden = true
+//        notGoingButtonOutlet.isEnabled = false*/
+//    }
+//
+//    @IBAction func interestedPressed(_ sender: Any) {
+//        /*goingButtonOutlet.isEnabled = false
+//        interestedButtonOutlet.isHidden = true
+//        interestedButtonOutlet.isEnabled = false
+//        notGoingButtonOutlet.isHidden = true
+//        notGoingButtonOutlet.isEnabled = false
+//        goingLabel.isHidden = false
+//        interestedLabel.isHidden = false*/
+//    }
+//    @IBAction func notGoingPressed(_ sender: Any) {
+//        /*goingButtonOutlet.isHidden = true
+//        goingButtonOutlet.isEnabled = false
+//        interestedButtonOutlet.isHidden = true
+//        interestedButtonOutlet.isEnabled = false
+//        notGoingButtonOutlet.isHidden = true
+//        notGoingButtonOutlet.isEnabled = false
+//        goingLabel.isHidden = false
+//        interestedLabel.isHidden = false*/
+//    }
     /*
     // MARK: - Navigation
 

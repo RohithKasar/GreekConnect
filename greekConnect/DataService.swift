@@ -18,6 +18,7 @@ class DataService {
     
     private var _REF_EVENTS = DB_BASE.child("events")
     private var _REF_USER = DB_BASE.child("Users")
+    private var _REF_ORGS = DB_BASE.child("Organizations")
     
     var REF_EVENTS: DatabaseReference {
         return _REF_EVENTS
@@ -25,6 +26,10 @@ class DataService {
     
     var REF_USER: DatabaseReference {
         return _REF_USER
+    }
+    
+    var REF_ORGS : DatabaseReference {
+        return _REF_ORGS
     }
     
     //API
@@ -82,6 +87,32 @@ class DataService {
             handler(userArray)
         }
     }
+    
+    /*func fetchOrgs(handler: @escaping ( _ events: [Organization]) -> ()) {
+        var orgArray = [Organization]()
+        REF_ORGS.observeSingleEvent(of: .value) { (allOrgsSnapshot) in
+            guard let allOrgsSnapshot = allOrgsSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            //loop through all events
+            for org in allOrgsSnapshot {
+                
+                let name = org.key
+                
+                let members = org.childSnapshot(forPath: "name") as! [String: String]
+                
+                let memberIds = Array(members.keys)
+                
+                
+                let org : Organization = Organization(name: name, memberIds: memberIds)
+                
+                
+                orgArray.append(org)
+                
+            }
+            
+            handler(orgArray)
+        }
+    }*/
     
     
     

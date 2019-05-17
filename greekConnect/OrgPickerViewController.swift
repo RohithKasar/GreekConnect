@@ -79,6 +79,8 @@ class OrgPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         let org = orgTextField.text ?? "mooted"
         self.ref?.child("Organizations").child(org).setValue([id:email])
         
+        //addUserOrg(org)
+        
         //somehow update existing user?
         
         
