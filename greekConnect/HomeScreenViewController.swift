@@ -38,6 +38,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("INSIDE VIEW DID LOAD")
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
@@ -51,6 +52,20 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         profileImage.clipsToBounds = true
         //goingLabel.isHidden = true
         //interestedLabel.isHidden = true
+        
+        DataService.instance.fetchEvents(handler: { (paramEvents) in
+            
+            self.events = paramEvents.reversed()
+            //self.tableView.reloadData()
+            
+            
+        })
+        
+        DataService.instance.fetchUser(handler : { (paramUsers) in
+            self.users = paramUsers
+            self.tableView.reloadData()
+            //print("inside user data block")
+        })
 
         
     }
@@ -119,30 +134,40 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+ 
+        
         DataService.instance.fetchEvents(handler: { (paramEvents) in
             
-            self.events = paramEvents
+            self.events = paramEvents.reversed()
             self.tableView.reloadData()
             
-    
+            
         })
         
-        DataService.instance.fetchUser { (paramUsers) in
+        DataService.instance.fetchUser(handler : { (paramUsers) in
             self.users = paramUsers
-            self.tableView.reloadData() 
-        }
+            self.tableView.reloadData()
+            
+        })
+       
+        //at this point, even though we have fetched events w/ fetchEvents, the count is still 0.
+        //however, if we are accessing events.count in another method, it is the correct value. how does that work?
+        
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return events.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
         
-        
+        //print(events.count)
         
         let event = events[indexPath.row]
+        
         cell.eventNameLabel.text = event.name
         cell.descriptionLabel.text = "Description " + event.description
         cell.locationLabel.text = "Where: " + event.location
@@ -160,7 +185,8 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         let pathReference = Storage.storage().reference(withPath: "Event/\(event.name)")
         pathReference.getData(maxSize: 1*1024*1024) { (data, error) in
             if error != nil {
-                print("error occurred pulling image from storage")
+                
+                print("error occurred pulling image from storage" + event.name)
             } else {
                 cell.eventImage.image = UIImage(data: data!)
             }

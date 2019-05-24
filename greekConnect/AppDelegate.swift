@@ -53,6 +53,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let vc = storyboard.instantiateViewController(withIdentifier: "loginVC")
             UIApplication.shared.windows.first?.rootViewController = vc
         }
+        
+        //let vc = storyboard.instantiateViewController(withIdentifier: "loginVC")
+        //UIApplication.shared.windows.first?.rootViewController = vc
     }
 
 }

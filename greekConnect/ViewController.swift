@@ -74,6 +74,8 @@ extension ViewController: FUIAuthDelegate {
         let email = authUI.auth?.currentUser?.email ?? "email"
         let name = authUI.auth?.currentUser?.displayName ?? "name"
         
+        
+        
         DataService.instance.pushUser(name: name, email: email, id: id, org: "temp") { (isComplete) in
             if isComplete {
                 print ("successfully updated a user to firebase")

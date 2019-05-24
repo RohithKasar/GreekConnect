@@ -23,6 +23,8 @@ class Organization {
         return _name
         
     }
+    
+    
 
     init (name : String, memberIds : [String]) {
         self._memberIds = memberIds
