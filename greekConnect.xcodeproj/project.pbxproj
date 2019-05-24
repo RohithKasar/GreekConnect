@@ -10,6 +10,7 @@
 		1E1B480AB24A43DF9ECDE94C /* Pods_greekConnect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABCD171A2B9B2C3FC53CAA86 /* Pods_greekConnect.framework */; };
 		3A038D75228BA0A9001AE44F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A038D74228BA0A9001AE44F /* Main.storyboard */; };
 		3A038D77228BF810001AE44F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A038D76228BF810001AE44F /* User.swift */; };
+		3A1E161C228E45380014D1F5 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1E161B228E45380014D1F5 /* AuthService.swift */; };
 		3A39892F226FE675001EBBF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A39892E226FE675001EBBF6 /* AppDelegate.swift */; };
 		3A398931226FE675001EBBF6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A398930226FE675001EBBF6 /* ViewController.swift */; };
 		3A398936226FE677001EBBF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A398935226FE677001EBBF6 /* Assets.xcassets */; };
@@ -57,6 +58,7 @@
 		1BE72EF60FDACCCFFACD657A /* Pods_greekConnectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_greekConnectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A038D74228BA0A9001AE44F /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3A038D76228BF810001AE44F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		3A1E161B228E45380014D1F5 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		3A39892B226FE675001EBBF6 /* greekConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = greekConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A39892E226FE675001EBBF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A398930226FE675001EBBF6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +150,8 @@
 			children = (
 				3A39892E226FE675001EBBF6 /* AppDelegate.swift */,
 				3A398930226FE675001EBBF6 /* ViewController.swift */,
+				3A1E161B228E45380014D1F5 /* AuthService.swift */,
+				3A62544A22851452003D92E7 /* DataService.swift */,
 				3A78CB0E22768939009DF6DB /* userInfo.swift */,
 				3A52A8462272A5DB00E769A7 /* OrgPickerViewController.swift */,
 				3A61F4672282701200611E2C /* PostCell.swift */,
@@ -163,7 +167,6 @@
 				6450B43C227BF51E00A45C21 /* EventsViewController.swift */,
 				6450B43E227BF54000A45C21 /* CreateEventViewController.swift */,
 				3AC346EB2281077F002B0173 /* Event.swift */,
-				3A62544A22851452003D92E7 /* DataService.swift */,
 				3A038D74228BA0A9001AE44F /* Main.storyboard */,
 				3A038D76228BF810001AE44F /* User.swift */,
 				3A973177228CFA4C00A46FFE /* Organization.swift */,
@@ -492,6 +495,7 @@
 				6450B43B227BF51200A45C21 /* ProfileViewController.swift in Sources */,
 				6450B43F227BF54000A45C21 /* CreateEventViewController.swift in Sources */,
 				3A78CB152276AB9D009DF6DB /* HomeScreenViewController.swift in Sources */,
+				3A1E161C228E45380014D1F5 /* AuthService.swift in Sources */,
 				3AC346E82281052F002B0173 /* PublicizeViewController.swift in Sources */,
 				6450B43D227BF51E00A45C21 /* EventsViewController.swift in Sources */,
 			);

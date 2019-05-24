@@ -36,6 +36,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("INSIDE VIEW DID LOAD")
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
@@ -49,6 +50,20 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         profileImage.clipsToBounds = true
         //goingLabel.isHidden = true
         //interestedLabel.isHidden = true
+        
+        DataService.instance.fetchEvents(handler: { (paramEvents) in
+            
+            self.events = paramEvents.reversed()
+            //self.tableView.reloadData()
+            
+            
+        })
+        
+        DataService.instance.fetchUser(handler : { (paramUsers) in
+            self.users = paramUsers
+            self.tableView.reloadData()
+            //print("inside user data block")
+        })
 
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         tableView.allowsSelection = false
@@ -118,18 +133,27 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+ 
+        
         DataService.instance.fetchEvents(handler: { (paramEvents) in
-            self.events = paramEvents
+            self.events = paramEvents.reversed()
             self.tableView.reloadData()
         })
         
-        DataService.instance.fetchUser { (paramUsers) in
+        DataService.instance.fetchUser(handler : { (paramUsers) in
             self.users = paramUsers
-            self.tableView.reloadData() 
-        }
+            self.tableView.reloadData()
+            
+        })
+       
+        //at this point, even though we have fetched events w/ fetchEvents, the count is still 0.
+        //however, if we are accessing events.count in another method, it is the correct value. how does that work?
+        
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return events.count
     }
     
@@ -137,94 +161,35 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
         cell.delegate = self
         
-        let whiteRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 8, width: self.view.frame.size.width - 20, height: self.view.frame.size.height - 190))
-
-        cell.contentView.backgroundColor = UIColor.init(white: 0.9, alpha: 1.0)
-
-        whiteRoundedView.layer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 1.0, 0.9])
-        whiteRoundedView.layer.masksToBounds = false
-        whiteRoundedView.layer.cornerRadius = 5.0
-        whiteRoundedView.layer.shadowOffset = CGSize(width: -1, height: 1)
-        whiteRoundedView.layer.shadowOpacity = 0.2
-
-        cell.contentView.addSubview(whiteRoundedView)
-        cell.contentView.sendSubviewToBack(whiteRoundedView)
+        let event = events[indexPath.row]
+        cell.eventNameLabel.text = event.name
+        cell.descriptionLabel.text = "Description " + event.description
+        cell.locationLabel.text = "Where: " + event.location
+        cell.timeLabel.text = "When: " + event.time
         
-        print(indexPath)
-        if (cell.going == true && cell.notGoing == false && cell.interested == false) {
-            cell.goingButton.isHidden = true
-            cell.goingButton.isEnabled = false
-            cell.interestedButton.isHidden = true
-            cell.interestedButton.isEnabled = false
-            cell.notGoingButton.isHidden = true
-            cell.notGoingButton.isEnabled = false
-            print(cell.self)
-            print(cell.going)
-            print(cell.interested)
-            print(cell.notGoing)
-            print("Button is hidden at \(indexPath.row)")
-        } else if (cell.going == false && cell.notGoing == true && cell.interested == false) {
-            cell.goingButton.isHidden = true
-            cell.goingButton.isEnabled = false
-            cell.interestedButton.isHidden = true
-            cell.interestedButton.isEnabled = false
-            cell.notGoingButton.isHidden = true
-            cell.notGoingButton.isEnabled = false
-            print(cell)
-            print("Button is hidden \(indexPath.row)")
-        } else if (cell.going == false && cell.notGoing == true && cell.interested == false) {
-            cell.goingButton.isHidden = true
-            cell.goingButton.isEnabled = false
-            cell.interestedButton.isHidden = true
-            cell.interestedButton.isEnabled = false
-            cell.notGoingButton.isHidden = true
-            cell.notGoingButton.isEnabled = false
-            print(cell)
-            print("Button is hidden \(indexPath.row)")
-        }
-        else {
-            cell.going = false
-            cell.interested = false
-            cell.notGoing = false
-            cell.goingButton.isHidden = false
-            cell.goingButton.isEnabled = true
-            cell.interestedButton.isHidden = false
-            cell.interestedButton.isEnabled = true
-            cell.notGoingButton.isHidden = false
-            cell.notGoingButton.isEnabled = true
-            print(cell)
-            print("Button is not hidden \(indexPath.row)")
+        let key = event.poster
+        //find the key in users and extract their username and org
+        for user in users {
+            if (user.id == key) {
+                cell.userNameLabel.text = user.name
+                cell.orgNameLabel.text = user.org
+            }
         }
         
-//        if (notGoing == false || going == false) {
-            let event = events[indexPath.row]
-            cell.eventNameLabel.text = event.name
-            cell.descriptionLabel.text = "Description " + event.description
-            cell.locationLabel.text = "Where: " + event.location
-            cell.timeLabel.text = "When: " + event.time
-        
-            let key = event.poster
-            //find the key in users and extract their username and org
-            for user in users {
-                if (user.id == key) {
-                    cell.userNameLabel.text = user.name
-                    cell.orgNameLabel.text = user.org
-                }
+        let pathReference = Storage.storage().reference(withPath: "Event/\(event.name)")
+        pathReference.getData(maxSize: 1*1024*1024) { (data, error) in
+            if error != nil {
+                
+                print("error occurred pulling image from storage" + event.name)
+            } else {
+                cell.eventImage.image = UIImage(data: data!)
             }
+        }
         
-            let pathReference = Storage.storage().reference(withPath: "Event/\(event.name)")
-            pathReference.getData(maxSize: 1*1024*1024) { (data, error) in
-                if error != nil {
-                    print("error occurred pulling image from storage")
-                } else {
-                    cell.eventImage.image = UIImage(data: data!)
-                }
-            }
-        
-            cell.profileImage.image = UIImage(named: "blank-profile-pic.jpg")
-            cell.profileImage.layer.cornerRadius = 19.5
-            cell.profileImage.clipsToBounds = true
-//        }
+        cell.profileImage.image = UIImage(named: "blank-profile-pic.jpg")
+        cell.profileImage.layer.cornerRadius = 19.5
+        cell.profileImage.clipsToBounds = true
+
         return cell
     }
     

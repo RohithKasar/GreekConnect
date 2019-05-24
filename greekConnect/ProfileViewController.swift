@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
+
 class ProfileViewController: UIViewController {
 
     
@@ -20,29 +22,70 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var userName: UILabel!
     
     var users = [User]()
+    var orgs = [Organization]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         DataService.instance.fetchUser { (paramUsers) in
             self.users = paramUsers
-        }
-        
-        let currentId = Firebase.Auth.auth().currentUser?.uid ?? "bleep"
-        
-        var currentUser = User(name: "name", id: "id", org: "org", email: "email")
-        
-        for user in users {
-            if (user.id == currentId) {
-                currentUser = user
+            let currentId = Firebase.Auth.auth().currentUser?.uid ?? "bleep"
+            var currentUser = User(name: "ah", id: "id", org: "org", email: "email")
+            for user in self.users {
+                if (user.id == currentId) {
+                    currentUser = user
+                }
             }
+            self.orgName.text = currentUser.org
+            self.userName.text = currentUser.name
+            
+            var currentOrg = Organization(name: "default", memberIds: [])
+            DataService.instance.fetchOrgs(handler: { (paramOrgs) in
+                self.orgs = paramOrgs
+                for org in self.orgs {
+                    if (org.name == currentUser.org) {
+                        currentOrg = org
+                    }
+                }
+                print(currentUser.org)
+                print("BOUTTA PRINT IDS")
+                print(currentOrg.name)
+                for id in currentOrg.memberIds {
+                    
+                    print("hello" + id)
+                    //self.memberList.text?.append(contentsOf: id)
+                }
+            })
+            
         }
         
-        orgName.text = currentUser.org
-        userName.text = currentUser.name
+//        DataService.instance.fetchOrgs(handler: { (paramOrgs) in
+//            self.orgs = paramOrgs
+//            for org in self.orgs {
+//                if (org.na)
+//        })
         
         
+//        var memberArray = [String]()
+//        DataService.instance.getIds(forOrg: currentUser.org, handler: { (paramMemberArray) in
+//            memberArray = paramMemberArray
+//        })
         
         
+//        for member in memberArray {
+//            memberList.text?.append(contentsOf: member + ", ")
+//        }
+        
+        //if we can get fetchOrgs and fetchUsers to work, we can customize this profile page.
+        //for some reason its not working here
+        
+        
+
+
+//        print(orgs.count)
+//        for org in orgs {
+//           print(org.name)
+//        }
         
         
         // Do any additional setup after loading the view.

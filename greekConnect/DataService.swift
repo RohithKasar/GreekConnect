@@ -96,33 +96,50 @@ class DataService {
         }
     }
     
-    /*func fetchOrgs(handler: @escaping ( _ events: [Organization]) -> ()) {
+    func fetchOrgs(handler: @escaping ( _ events: [Organization]) -> ()) {
         var orgArray = [Organization]()
         REF_ORGS.observeSingleEvent(of: .value) { (allOrgsSnapshot) in
             guard let allOrgsSnapshot = allOrgsSnapshot.children.allObjects as? [DataSnapshot] else { return }
             
-            //loop through all events
+            //loop through all orgs
             for org in allOrgsSnapshot {
                 
-                let name = org.key
+                let name = org.childSnapshot(forPath: "name").value as! String
+                var memberDict = [String:String]()
                 
-                let members = org.childSnapshot(forPath: "name") as! [String: String]
+                // i only want the ids here
+                memberDict = org.childSnapshot(forPath: "members").value as! [String:String]
+                let members = Array(memberDict.keys)
                 
-                let memberIds = Array(members.keys)
+                //let members = array of all user IDs
                 
-                
-                let org : Organization = Organization(name: name, memberIds: memberIds)
+                let org : Organization = Organization(name: name, memberIds: members)
                 
                 
                 orgArray.append(org)
-                
+                print(orgArray.count)
             }
             
             handler(orgArray)
         }
-    }*/
+        //at this point orgArray contains what we want which makes absolutely no sense
+    }
     
-    
+    func getIds (forOrg paramOrg : String, handler: @escaping ( _ uidArray: [String]) -> ()) {
+        REF_ORGS.observeSingleEvent(of: .value) { (orgSnapshot) in
+            var idArray = [String]()
+            guard let orgSnapshot = orgSnapshot.children.allObjects as? [DataSnapshot] else {return}
+            for org in orgSnapshot {
+                //let membersSnapshot = org.childSnapshot(forPath: "members") as? [DataSnapshot]
+                //extract name from this org
+                let name = org.childSnapshot(forPath: "name").value as! String
+                if (name == paramOrg) {
+                    idArray = org.childSnapshot(forPath: "members").value as! [String]
+                }
+            }
+            handler(idArray)
+        }
+    }
     
     func pushUser(name : String, email : String, id : String,
                   org : String, uploadComplete: @escaping (_ status: Bool) -> ()) {

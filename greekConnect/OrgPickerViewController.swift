@@ -7,7 +7,9 @@
 //
 
 import UIKit
+import Firebase
 import FirebaseDatabase
+import FirebaseAuth
 
 class OrgPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     var org = ""
@@ -71,17 +73,59 @@ class OrgPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     
     @objc func donePressed(sender: UIBarButtonItem) {
-        //User.globalVariable.org = orgTextField.text ?? "yeet"
+        var orgArray = [Organization]()
         
-        //FIX THESE TWO LINES
+//        print("adslfghjiwreuighlfjkndlsjeiwaoruygflhbjvdsfkh;erwu[pty;'")
+//        print(orgArray.count)
+        //unfortunately at this point orgArray is empty
+        //if it were not empty, we would be able to handle adding to an existing org vs creating a new org
+        
+        
         
         DummyUser.globalVariable.org = orgTextField.text ?? "mooted"
-        let org = orgTextField.text ?? "mooted"
-        self.ref?.child("Organizations").child(org).setValue([id:email])
+        let passedOrg = orgTextField.text ?? "mooted"
+        //DataService.instance.REF_USER.childByAutoId(DummyUser.globalVariable.id)
+        DataService.instance.REF_USER.child(DummyUser.globalVariable.id).updateChildValues(["org" : passedOrg])
+        var inside = false
         
-        //addUserOrg(org)
+        DataService.instance.fetchOrgs(handler: { (paramOrgs) in
+            orgArray = paramOrgs
+            for org in orgArray {
+                if (org.name == passedOrg) {
+                    inside = true;
+                    
+                }
+            }
+            if (!inside) {
+                let autoId = DataService.instance.REF_ORGS.child(passedOrg)
+                autoId.child("name").setValue(passedOrg)
+                autoId.child("members").updateChildValues([self.id:self.email])
+            } else {
+                Database.database().reference().child("Organizations").child(passedOrg).child("members").updateChildValues([self.id:self.email])
+            }
+            
+        })
         
-        //somehow update existing user?
+//        for org in orgArray {
+//            if (org.name == passedOrg) {
+//                inside = true;
+//                passedOrg = org.name
+//
+//                //org.memberIds.append
+//            }
+//        }
+//        if (!inside) {
+//            //let autoId = DataService.instance.REF_ORGS.child(passedOrg)
+//            let autoId = DataService.instance.REF_ORGS.childByAutoId()
+//            autoId.child("name").setValue(passedOrg)
+//            autoId.child("members").updateChildValues([id:email])
+//        } else {
+//            //how to add to an existing org????????
+//            //Database.database().reference().child("Organizations").child(passedOrg).child("members").updateChildValues([id:email])
+//
+//        }
+        
+        
         
         
         orgTextField.resignFirstResponder()
