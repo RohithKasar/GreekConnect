@@ -70,19 +70,19 @@ extension ViewController: FUIAuthDelegate {
             }
         }*/
         
-        let id = authUI.auth?.currentUser?.uid ?? "UserId"
-        let email = authUI.auth?.currentUser?.email ?? "email"
-        let name = authUI.auth?.currentUser?.displayName ?? "name"
-        
-        
-        
-        DataService.instance.pushUser(name: name, email: email, id: id, org: "temp") { (isComplete) in
-            if isComplete {
-                print ("successfully updated a user to firebase")
-            } else {
-                print ("there was an error uploading a user to firebase")
-            }
-        }
+//        let id = authUI.auth?.currentUser?.uid ?? "UserId"
+//        let email = authUI.auth?.currentUser?.email ?? "email"
+//        let name = authUI.auth?.currentUser?.displayName ?? "name"
+//
+//
+//
+//        DataService.instance.pushUser(name: name, email: email, id: id, org: "temp") { (isComplete) in
+//            if isComplete {
+//                print ("successfully updated a user to firebase")
+//            } else {
+//                print ("there was an error uploading a user to firebase")
+//            }
+//        }
 
         DummyUser.globalVariable.id = authUI.auth?.currentUser?.uid ?? "User"
         DummyUser.globalVariable.email = authUI.auth?.currentUser?.email ?? "email"
@@ -91,6 +91,17 @@ extension ViewController: FUIAuthDelegate {
         
         if (authDataResult?.additionalUserInfo?.isNewUser ?? false) {
             
+            let id = authUI.auth?.currentUser?.uid ?? "UserId"
+            let email = authUI.auth?.currentUser?.email ?? "email"
+            let name = authUI.auth?.currentUser?.displayName ?? "name"
+            
+            DataService.instance.pushUser(name: name, email: email, id: id) { (isComplete) in
+                if isComplete {
+                    print ("successfully updated a user to firebase")
+                } else {
+                    print ("there was an error uploading a user to firebase")
+                }
+            }
             performSegue(withIdentifier: "orgPickSegue", sender: self)
             
         } else {

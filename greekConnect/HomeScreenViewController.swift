@@ -36,7 +36,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("INSIDE VIEW DID LOAD")
+        
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
@@ -45,7 +45,24 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         menuShadowView.backgroundColor = UIColor.black
         menuShadowView.layer.opacity = 0
         
-        profileImage.image = UIImage(named: "blank-profile-pic.jpg")
+        //profileImage.image = UIImage(named: "blank-profile-pic.jpg")
+        
+        
+        //let orgName = cell.orgNameLabel.text?.lowercased()
+        let orgName = DummyUser.globalVariable.org.lowercased()
+        let sexyOrgName = (orgName) + ".png"
+        
+        let profileReference = Storage.storage().reference(withPath: "Images/\(sexyOrgName)")
+        profileReference.getData(maxSize: 1*1024*1024) { (data, error) in
+            if error != nil {
+                print("error occurred pulling image from storage " + DummyUser.globalVariable.name)
+                self.profileImage.image = UIImage(named: "blank-profile-pic.jpg")
+            } else {
+                self.profileImage.image = UIImage(data: data!)
+            }
+        }
+        
+        //self.profileImage.image = UIImage(named: "blank-profile-pic.jpg")
         profileImage.layer.cornerRadius = 32.5
         profileImage.clipsToBounds = true
         //goingLabel.isHidden = true
@@ -53,8 +70,16 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         
         DataService.instance.fetchEvents(handler: { (paramEvents) in
             
-            self.events = paramEvents.reversed()
-            //self.tableView.reloadData()
+            let marapEvents = paramEvents.reversed()
+            for event in marapEvents {
+                if (event.isPrivate == false) {
+                    //self.events.append(event)
+                }
+                
+            }
+            
+            //self.events = paramEvents.reversed()
+            self.tableView.reloadData()
             
             
         })
@@ -62,7 +87,30 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         DataService.instance.fetchUser(handler : { (paramUsers) in
             self.users = paramUsers
             self.tableView.reloadData()
-            //print("inside user data block")
+            let currentId = Firebase.Auth.auth().currentUser?.uid ?? "bleep"
+            var currentUser = User(name: "ah", id: "id", org: "org", email: "email")
+            for user in self.users {
+                if (user.id == currentId) {
+                    currentUser = user
+                }
+            }
+            
+            
+            let profileOrgName = currentUser.org.lowercased()
+            
+            let sexyOrgName = (profileOrgName) + ".png"
+           
+            
+            let profileReference = Storage.storage().reference(withPath: "Images/\(sexyOrgName)")
+            profileReference.getData(maxSize: 1*1024*1024) { (data, error) in
+                if error != nil {
+                    //print("error occurred pulling image from storage " + DummyUser.globalVariable.name)
+                    self.profileImage.image = UIImage(named: "blank-profile-pic.jpg")
+                } else {
+                    self.profileImage.image = UIImage(data: data!)
+                }
+            }
+            
         })
 
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
@@ -136,7 +184,14 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
  
         
         DataService.instance.fetchEvents(handler: { (paramEvents) in
-            self.events = paramEvents.reversed()
+            let marapEvents = paramEvents.reversed()
+            self.events.removeAll()
+            for event in marapEvents {
+                if (event.isPrivate == false) {
+                    self.events.append(event)
+                }
+                
+            }
             self.tableView.reloadData()
         })
         
@@ -145,7 +200,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
             self.tableView.reloadData()
             
         })
-       
+        self.tableView.reloadData()
         //at this point, even though we have fetched events w/ fetchEvents, the count is still 0.
         //however, if we are accessing events.count in another method, it is the correct value. how does that work?
         
@@ -167,6 +222,8 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.locationLabel.text = "Where: " + event.location
         cell.timeLabel.text = "When: " + event.time
         
+        
+        
         let key = event.poster
         //find the key in users and extract their username and org
         for user in users {
@@ -179,14 +236,30 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         let pathReference = Storage.storage().reference(withPath: "Event/\(event.name)")
         pathReference.getData(maxSize: 1*1024*1024) { (data, error) in
             if error != nil {
+                cell.eventImage.image = UIImage(named: "poster-placeholder.jpg")
                 
-                print("error occurred pulling image from storage" + event.name)
             } else {
                 cell.eventImage.image = UIImage(data: data!)
             }
         }
         
-        cell.profileImage.image = UIImage(named: "blank-profile-pic.jpg")
+        
+        let orgName = cell.orgNameLabel.text?.lowercased()
+        
+        
+        let sexyOrgName = (orgName ?? "oof") + ".png"
+        
+        let profileReference = Storage.storage().reference(withPath: "Images/\(sexyOrgName)")
+        profileReference.getData(maxSize: 1*1024*1024) { (data, error) in
+            if error != nil {
+                
+                cell.profileImage.image = UIImage(named: "blank-profile-pic.jpg")
+            } else {
+                cell.profileImage.image = UIImage(data: data!)
+            }
+        }
+        
+        
         cell.profileImage.layer.cornerRadius = 19.5
         cell.profileImage.clipsToBounds = true
 
@@ -199,10 +272,10 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func goingPressed(_ sender: UIButton) {
         let indexPath = getCurrentCellIndexPath(sender)
-        print(indexPath as Any)
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath!) as! PostCell
         cell.delegate = self
-        print(cell)
+        
         cell.going = true
         cell.interested = false
         cell.notGoing = false
@@ -218,10 +291,9 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
 
     func interestedPressed(_ sender: UIButton) {
         let indexPath = getCurrentCellIndexPath(sender)
-        print(indexPath as Any)
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath!) as! PostCell
         cell.delegate = self
-        print(cell)
         cell.going = false
         cell.interested = true
         cell.notGoing = false
@@ -236,10 +308,10 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func notGoingPressed(_ sender: UIButton) {
         let indexPath = getCurrentCellIndexPath(sender)
-        print(indexPath as Any)
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath!) as! PostCell
         cell.delegate = self
-        print(cell)
+        
         cell.going = false
         cell.interested = false
         cell.notGoing = true
@@ -254,9 +326,9 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func getCurrentCellIndexPath(_ sender: UIButton) -> IndexPath? {
         let buttonPosition = sender.convert(CGPoint.zero, to: tableView)
-        print(buttonPosition)
+        
         if let indexPath: IndexPath = tableView.indexPathForRow(at: buttonPosition) {
-            print(indexPath)
+            
             return indexPath
         }
         return nil

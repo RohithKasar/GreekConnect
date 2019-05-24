@@ -17,8 +17,7 @@ class OrgPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     var email = DummyUser.globalVariable.email
     var ref:DatabaseReference?
     var organization = ["placeholder"]
-    var fratList = ["", "Alpha Epsilon Omega, Eta","Alpha Epsilon Pi", "Alpha Lamda Mu", "Beta Theta Pi", "Delta Lambda Phi",
-                    "Gamma Zeta Alpha", "Kappa Sigma", "Lambda Chi Alpha", "Lambda Theta Phi", "Lambda Phi Epsilon",
+    var fratList = ["", "Alpha Epsilon Omega, Eta","Alpha Epsilon Pi", "Alpha Lamda Mu", "Beta Theta Pi", "Delta Lambda     Phi","Gamma Zeta Alpha", "Kappa Sigma", "Lambda Chi Alpha", "Lambda Theta Phi", "Lambda Phi Epsilon",
                     "Phi Delta Theta", "Phi Gamma Delta", "Pi Kappa Alpha", "Pi Kappa Phi", "Nu Alpha Kappa",
                     "Phi Iota Alpha", "Pi Alpha Phi", "Psi Chi Omega", "Sigma Alpha Epsilon", "Sigma Alpha Mu",
                     "Sigma Chi", "Sigma Nu", "Sigma Phi Epsilon", "Tau Kappa Epsilon", "Triangle"]
@@ -74,12 +73,6 @@ class OrgPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     @objc func donePressed(sender: UIBarButtonItem) {
         var orgArray = [Organization]()
-        
-//        print("adslfghjiwreuighlfjkndlsjeiwaoruygflhbjvdsfkh;erwu[pty;'")
-//        print(orgArray.count)
-        //unfortunately at this point orgArray is empty
-        //if it were not empty, we would be able to handle adding to an existing org vs creating a new org
-        
         
         
         DummyUser.globalVariable.org = orgTextField.text ?? "mooted"

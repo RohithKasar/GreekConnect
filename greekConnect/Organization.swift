@@ -18,20 +18,12 @@ class Organization {
     var memberIds : [String] {
         return _memberIds
     }
-    
     var name : String {
         return _name
-        
     }
     
-    
-
     init (name : String, memberIds : [String]) {
         self._memberIds = memberIds
         self._name = name
     }
-    
-    
-
-    
 }

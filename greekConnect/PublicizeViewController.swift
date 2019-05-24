@@ -198,7 +198,7 @@ class PublicizeViewController: UIViewController, UIImagePickerControllerDelegate
         let image = info[.editedImage] as! UIImage
         let size = CGSize(width: 300, height: 300)
         let scaledImage = image.af_imageScaled(to: size)
-        //print(scaledImage == nil)
+        
         
         imageView.image = scaledImage
         

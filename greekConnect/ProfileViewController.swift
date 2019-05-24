@@ -15,7 +15,6 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var coverImage: UIImageView!
     
-    @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var orgName: UILabel!
     @IBOutlet weak var orgDescription: UILabel!
     @IBOutlet weak var memberList: UILabel!
@@ -23,9 +22,27 @@ class ProfileViewController: UIViewController {
     
     var users = [User]()
     var orgs = [Organization]()
-    
+    var memberArray = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        var orgName = DummyUser.globalVariable.org
+//        orgName = orgName.lowercased()
+//        
+//        
+//        let sexyOrgName = orgName + ".png"
+//        
+//        let profileImageReference = Storage.storage().reference(withPath: "Image/\(sexyOrgName)")
+//        profileImageReference.getData(maxSize: 1*1024*1024) { (data, error) in
+//            if error != nil {
+//                print("error occurred pulling image from storage")
+//                self.profileImage.image = UIImage(named: "blank-profile-pic.jpg")
+//            } else {
+//                self.profileImage.image = UIImage(data: data!)
+//            }
+//        }
+        
+        
         
         DataService.instance.fetchUser { (paramUsers) in
             self.users = paramUsers
@@ -39,6 +56,19 @@ class ProfileViewController: UIViewController {
             self.orgName.text = currentUser.org
             self.userName.text = currentUser.name
             
+            let profileOrgName = currentUser.org.lowercased()
+            let sexyOrgName = (profileOrgName) + ".png"
+            
+            let profileReference = Storage.storage().reference(withPath: "Images/\(sexyOrgName)")
+            profileReference.getData(maxSize: 1*1024*1024) { (data, error) in
+                if error != nil {
+                    print("error occurred pulling image from storage " + DummyUser.globalVariable.name)
+                    self.coverImage.image = UIImage(named: "blank-profile-pic.jpg")
+                } else {
+                    self.coverImage.image = UIImage(data: data!)
+                }
+            }
+            
             var currentOrg = Organization(name: "default", memberIds: [])
             DataService.instance.fetchOrgs(handler: { (paramOrgs) in
                 self.orgs = paramOrgs
@@ -47,13 +77,21 @@ class ProfileViewController: UIViewController {
                         currentOrg = org
                     }
                 }
-                print(currentUser.org)
-                print("BOUTTA PRINT IDS")
-                print(currentOrg.name)
+
+
+                
                 for id in currentOrg.memberIds {
                     
-                    print("hello" + id)
-                    //self.memberList.text?.append(contentsOf: id)
+                    
+                    for user in self.users {
+                        if (user.id == id) {
+                            self.memberArray.append(user.name)
+                        }
+                    }
+                }
+                self.memberList.text?.append("\n")
+                for member in self.memberArray {
+                    self.memberList.text?.append(contentsOf: member + "\n")
                 }
             })
             
@@ -82,10 +120,7 @@ class ProfileViewController: UIViewController {
         
 
 
-//        print(orgs.count)
-//        for org in orgs {
-//           print(org.name)
-//        }
+
         
         
         // Do any additional setup after loading the view.
