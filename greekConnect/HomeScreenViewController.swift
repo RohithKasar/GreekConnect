@@ -11,30 +11,28 @@ import Firebase
 //import FirebaseUI
 import FirebaseAuth
 
-class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    
+class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PostCellDelegate {
     
     @IBOutlet weak var hamburgerButton: UIBarButtonItem!
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var leadingShadowConstraint: NSLayoutConstraint!
     @IBOutlet weak var trailingShadowConstraint: NSLayoutConstraint!
-   // @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var menuShadowView: UIView!
     @IBOutlet weak var profileImage: UIImageView!
-    
     
 //    @IBOutlet weak var goingLabel: UILabel!
 //    @IBOutlet weak var interestedLabel: UILabel!
     
     @IBOutlet weak var tableView: UITableView!
     
-    
     var events = [Event]()
     var users = [User]()
     
     var menuShow = false
+//    var going = false
+//    var interested = false
+//    var notGoing = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +65,8 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
             //print("inside user data block")
         })
 
-        
+        self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        tableView.allowsSelection = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -137,11 +136,8 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
  
         
         DataService.instance.fetchEvents(handler: { (paramEvents) in
-            
             self.events = paramEvents.reversed()
             self.tableView.reloadData()
-            
-            
         })
         
         DataService.instance.fetchUser(handler : { (paramUsers) in
@@ -162,12 +158,10 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
-        
-        //print(events.count)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
+        cell.delegate = self
         
         let event = events[indexPath.row]
-        
         cell.eventNameLabel.text = event.name
         cell.descriptionLabel.text = "Description " + event.description
         cell.locationLabel.text = "Where: " + event.location
@@ -195,46 +189,79 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.profileImage.image = UIImage(named: "blank-profile-pic.jpg")
         cell.profileImage.layer.cornerRadius = 19.5
         cell.profileImage.clipsToBounds = true
-        
+
         return cell
     }
-    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 500
     }
     
+    func goingPressed(_ sender: UIButton) {
+        let indexPath = getCurrentCellIndexPath(sender)
+        print(indexPath as Any)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath!) as! PostCell
+        cell.delegate = self
+        print(cell)
+        cell.going = true
+        cell.interested = false
+        cell.notGoing = false
+        cell.goingButton.isHidden = true
+        cell.goingButton.isEnabled = false
+        cell.interestedButton.isHidden = true
+        cell.interestedButton.isEnabled = false
+        cell.notGoingButton.isHidden = true
+        cell.notGoingButton.isEnabled = false
+        //cell.isHidden = true
+        self.tableView.reloadData()
+    }
+
+    func interestedPressed(_ sender: UIButton) {
+        let indexPath = getCurrentCellIndexPath(sender)
+        print(indexPath as Any)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath!) as! PostCell
+        cell.delegate = self
+        print(cell)
+        cell.going = false
+        cell.interested = true
+        cell.notGoing = false
+        cell.goingButton.isHidden = true
+        cell.goingButton.isEnabled = false
+        cell.interestedButton.isHidden = true
+        cell.interestedButton.isEnabled = false
+        cell.notGoingButton.isHidden = true
+        cell.notGoingButton.isEnabled = false
+        self.tableView.reloadData()
+    }
     
-//    @IBAction func goingPressed(_ sender: Any) {
-//        /*goingLabel.isHidden = false
-//        interestedLabel.isHidden = false
-//        goingButtonOutlet.isHidden = true
-//        goingButtonOutlet.isEnabled = false
-//        interestedButtonOutlet.isHidden = true
-//        interestedButtonOutlet.isEnabled = false
-//        notGoingButtonOutlet.isHidden = true
-//        notGoingButtonOutlet.isEnabled = false*/
-//    }
-//
-//    @IBAction func interestedPressed(_ sender: Any) {
-//        /*goingButtonOutlet.isEnabled = false
-//        interestedButtonOutlet.isHidden = true
-//        interestedButtonOutlet.isEnabled = false
-//        notGoingButtonOutlet.isHidden = true
-//        notGoingButtonOutlet.isEnabled = false
-//        goingLabel.isHidden = false
-//        interestedLabel.isHidden = false*/
-//    }
-//    @IBAction func notGoingPressed(_ sender: Any) {
-//        /*goingButtonOutlet.isHidden = true
-//        goingButtonOutlet.isEnabled = false
-//        interestedButtonOutlet.isHidden = true
-//        interestedButtonOutlet.isEnabled = false
-//        notGoingButtonOutlet.isHidden = true
-//        notGoingButtonOutlet.isEnabled = false
-//        goingLabel.isHidden = false
-//        interestedLabel.isHidden = false*/
-//    }
+    func notGoingPressed(_ sender: UIButton) {
+        let indexPath = getCurrentCellIndexPath(sender)
+        print(indexPath as Any)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath!) as! PostCell
+        cell.delegate = self
+        print(cell)
+        cell.going = false
+        cell.interested = false
+        cell.notGoing = true
+        cell.goingButton.isHidden = true
+        cell.goingButton.isEnabled = false
+        cell.interestedButton.isHidden = true
+        cell.interestedButton.isEnabled = false
+        cell.notGoingButton.isHidden = true
+        cell.notGoingButton.isEnabled = false
+        self.tableView.reloadData()
+    }
+    
+    func getCurrentCellIndexPath(_ sender: UIButton) -> IndexPath? {
+        let buttonPosition = sender.convert(CGPoint.zero, to: tableView)
+        print(buttonPosition)
+        if let indexPath: IndexPath = tableView.indexPathForRow(at: buttonPosition) {
+            print(indexPath)
+            return indexPath
+        }
+        return nil
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -244,5 +271,4 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         // Pass the selected object to the new view controller.
     }
     */
-
 }

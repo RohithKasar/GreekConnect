@@ -46,9 +46,14 @@ class DataService {
                 let time = event.childSnapshot(forPath: "time").value as! String
                 let name = event.childSnapshot(forPath: "name").value as! String
                 let poster = event.childSnapshot(forPath: "poster").value as! String
+//                let going = event.childSnapshot(forPath: "going").value as! String
+//                let interested = event.childSnapshot(forPath: "interested").value as! String
+//                let notGoing = event.childSnapshot(forPath: "notGoing").value as! String
                 //let org = event.childSnapshot(forPath: "posterOrg").value as! String
                 
                 let event : Event = Event(name: name, location: location, time: time, description: description, poster: poster)
+//                    ,
+//                                          going: going, interested: interested, notGoing: notGoing)
                 eventsArray.append(event)
                 
             }
@@ -58,9 +63,12 @@ class DataService {
     }
     
     func pushEvent(name : String, location: String, time: String,
-                   description: String, id:String, uploadComplete: @escaping (_ status: Bool) -> ()) {
-        
-        let eventData : [String: Any?] = ["name" : name, "location" : location, "time": time, "description": description, "poster": id ]
+                   description: String, id: String, uploadComplete: @escaping (_ status: Bool) -> ()) {
+//        , going: String,
+//                   interested: String, notGoing: String, uploadComplete: @escaping (_ status: Bool) -> ()) {
+    
+        let eventData : [String: Any?] = ["name" : name, "location" : location, "time": time, "description": description, "poster": id]
+//            , "going": going, "notGoing": notGoing, "interested": interested ]
             
             REF_EVENTS.childByAutoId().updateChildValues(eventData)
             uploadComplete(true)
