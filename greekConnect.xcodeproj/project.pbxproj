@@ -30,6 +30,7 @@
 		6450B43B227BF51200A45C21 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6450B43A227BF51200A45C21 /* ProfileViewController.swift */; };
 		6450B43D227BF51E00A45C21 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6450B43C227BF51E00A45C21 /* EventsViewController.swift */; };
 		6450B43F227BF54000A45C21 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6450B43E227BF54000A45C21 /* CreateEventViewController.swift */; };
+		645A4ED92293835D0055B87B /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645A4ED82293835D0055B87B /* EventCell.swift */; };
 		B55AB57743488BC969C83BA5 /* Pods_greekConnectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE72EF60FDACCCFFACD657A /* Pods_greekConnectUITests.framework */; };
 		FA1ABB23E72FF371CFEC853A /* Pods_greekConnectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6157ED1438426C47C7CD02D4 /* Pods_greekConnectTests.framework */; };
 /* End PBXBuildFile section */
@@ -86,6 +87,7 @@
 		6450B43A227BF51200A45C21 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		6450B43C227BF51E00A45C21 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		6450B43E227BF54000A45C21 /* CreateEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
+		645A4ED82293835D0055B87B /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		6F022AFEB5130D38619C707B /* Pods-greekConnectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-greekConnectTests.release.xcconfig"; path = "Target Support Files/Pods-greekConnectTests/Pods-greekConnectTests.release.xcconfig"; sourceTree = "<group>"; };
 		ABCD171A2B9B2C3FC53CAA86 /* Pods_greekConnect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_greekConnect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3729B81B55DF0677B82E203 /* Pods-greekConnectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-greekConnectTests.debug.xcconfig"; path = "Target Support Files/Pods-greekConnectTests/Pods-greekConnectTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				3A038D74228BA0A9001AE44F /* Main.storyboard */,
 				3A038D76228BF810001AE44F /* User.swift */,
 				3A973177228CFA4C00A46FFE /* Organization.swift */,
+				645A4ED82293835D0055B87B /* EventCell.swift */,
 			);
 			path = greekConnect;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				3A973178228CFA4C00A46FFE /* Organization.swift in Sources */,
 				3A52A8472272A5DB00E769A7 /* OrgPickerViewController.swift in Sources */,
 				3A61F4682282701200611E2C /* PostCell.swift in Sources */,
+				645A4ED92293835D0055B87B /* EventCell.swift in Sources */,
 				3A398931226FE675001EBBF6 /* ViewController.swift in Sources */,
 				3A78CB112276A5C3009DF6DB /* InitialViewController.swift in Sources */,
 				3AC346EC2281077F002B0173 /* Event.swift in Sources */,
@@ -658,6 +662,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8W23B549HK;
 				INFOPLIST_FILE = greekConnect/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -676,6 +681,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8W23B549HK;
 				INFOPLIST_FILE = greekConnect/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
