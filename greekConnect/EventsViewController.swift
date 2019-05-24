@@ -13,7 +13,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     var events = [Event]()
     var users = [User]()
-    var eventNames = [String]()
+    var eventIds = [String]()
     var privateEvents = [Event]()
     
     @IBOutlet weak var eventsTableView: UITableView!
@@ -29,14 +29,14 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidAppear(animated)
         let currentUser = Auth.auth().currentUser?.uid ?? "bleep"
         DataService.instance.fetchPrivateEvents(forUser: currentUser) { (paramPrivateEvents) in
-            self.eventNames = paramPrivateEvents.reversed()
+            self.eventIds = paramPrivateEvents.reversed()
             
             DataService.instance.fetchEvents(handler: { (paramEvents) in
                 self.events = paramEvents
                 
                 for event in self.events {
-                    for eventName in self.eventNames {
-                        if (eventName == event.name) {
+                    for eventId in self.eventIds {
+                        if (eventId == event.eventId) {
                             self.privateEvents.append(event)
                         }
                     }

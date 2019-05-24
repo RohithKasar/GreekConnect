@@ -204,7 +204,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikt-Wl-F5X">
-                                                    <rect key="frame" x="36" y="451.5" width="46" height="30"/>
+                                                    <rect key="frame" x="36" y="451.5" width="41" height="30"/>
                                                     <state key="normal" title="Going"/>
                                                     <connections>
                                                         <action selector="goingPressed:" destination="BtU-Sc-OTh" eventType="touchUpInside" id="pzS-YG-3Te"/>
@@ -220,17 +220,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DNa-da-AGO">
-                                                    <rect key="frame" x="152" y="451.5" width="70" height="30"/>
-                                                    <state key="normal" title="Interested"/>
-                                                    <connections>
-                                                        <action selector="notGoingPressed:" destination="BtU-Sc-OTh" eventType="touchUpInside" id="43p-kE-zeN"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TxQ-tk-bxF">
-                                                    <rect key="frame" x="277" y="451.5" width="70" height="30"/>
+                                                    <rect key="frame" x="147" y="451.5" width="70" height="30"/>
                                                     <state key="normal" title="Not Going"/>
                                                     <connections>
-                                                        <action selector="interestedPressed:" destination="BtU-Sc-OTh" eventType="touchUpInside" id="UVQ-TR-XGH"/>
+                                                        <action selector="notGoingPressed:" destination="BtU-Sc-OTh" eventType="touchUpInside" id="43p-kE-zeN"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="BJ's Fundraiser!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="201-Bh-AMH">
@@ -256,21 +249,18 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="TxQ-tk-bxF" firstAttribute="leading" secondItem="DNa-da-AGO" secondAttribute="trailing" constant="55" id="0BS-Vj-2IE"/>
                                                 <constraint firstItem="qEy-gm-1G8" firstAttribute="top" secondItem="wST-2q-uHY" secondAttribute="bottom" constant="12" id="68k-Z8-RFJ"/>
                                                 <constraint firstAttribute="bottom" secondItem="ikt-Wl-F5X" secondAttribute="bottom" constant="16" id="AZf-Ky-Ral"/>
                                                 <constraint firstItem="wST-2q-uHY" firstAttribute="top" secondItem="201-Bh-AMH" secondAttribute="bottom" constant="8" id="CBm-AI-CV1"/>
                                                 <constraint firstItem="j79-cS-qJr" firstAttribute="leading" secondItem="qEy-gm-1G8" secondAttribute="trailing" constant="8" id="FP9-uo-aLa"/>
                                                 <constraint firstItem="Bf5-xa-pKK" firstAttribute="top" secondItem="qEy-gm-1G8" secondAttribute="bottom" constant="8.5" id="FTE-yL-2Lj"/>
                                                 <constraint firstItem="qEy-gm-1G8" firstAttribute="leading" secondItem="Q41-RN-Xjf" secondAttribute="leading" constant="20" id="Fi3-Pa-yIm"/>
-                                                <constraint firstAttribute="trailing" secondItem="TxQ-tk-bxF" secondAttribute="trailing" constant="28" id="GNS-kL-kUS"/>
                                                 <constraint firstAttribute="trailing" secondItem="Bf5-xa-pKK" secondAttribute="trailing" constant="15" id="LJM-QC-wW8"/>
                                                 <constraint firstItem="201-Bh-AMH" firstAttribute="top" secondItem="hZa-AU-kNH" secondAttribute="bottom" constant="10" id="M22-Mh-BPx"/>
                                                 <constraint firstItem="hZa-AU-kNH" firstAttribute="top" secondItem="Q41-RN-Xjf" secondAttribute="top" constant="16" id="MxX-dU-V8F"/>
                                                 <constraint firstItem="ikt-Wl-F5X" firstAttribute="leading" secondItem="Q41-RN-Xjf" secondAttribute="leading" constant="36" id="P5p-Wf-Dh1"/>
                                                 <constraint firstItem="Bf5-xa-pKK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="j79-cS-qJr" secondAttribute="bottom" constant="8.5" id="RSj-EB-I9j"/>
                                                 <constraint firstItem="eEz-71-JnC" firstAttribute="top" secondItem="fUw-eC-sWU" secondAttribute="top" id="Sam-Mt-AHj"/>
-                                                <constraint firstItem="TxQ-tk-bxF" firstAttribute="top" secondItem="DNa-da-AGO" secondAttribute="top" id="VfH-QC-Ak0"/>
                                                 <constraint firstAttribute="trailing" secondItem="wST-2q-uHY" secondAttribute="trailing" constant="15" id="WJD-lc-Eqf"/>
                                                 <constraint firstItem="j79-cS-qJr" firstAttribute="top" secondItem="qEy-gm-1G8" secondAttribute="top" id="YDU-VP-FnW"/>
                                                 <constraint firstItem="fUw-eC-sWU" firstAttribute="top" secondItem="hZa-AU-kNH" secondAttribute="top" id="ZdA-hv-Vhd"/>
@@ -287,7 +277,6 @@
                                                 <constraint firstAttribute="trailing" secondItem="201-Bh-AMH" secondAttribute="trailing" constant="46" id="leL-UK-DvR"/>
                                                 <constraint firstItem="DNa-da-AGO" firstAttribute="leading" secondItem="ikt-Wl-F5X" secondAttribute="trailing" constant="70" id="mOE-Av-5Q9"/>
                                                 <constraint firstItem="Bf5-xa-pKK" firstAttribute="leading" secondItem="Q41-RN-Xjf" secondAttribute="leading" constant="15" id="pO0-Pf-Igt"/>
-                                                <constraint firstAttribute="bottom" secondItem="TxQ-tk-bxF" secondAttribute="bottom" constant="16" id="sIf-q2-Eqh"/>
                                                 <constraint firstItem="ikt-Wl-F5X" firstAttribute="top" secondItem="DNa-da-AGO" secondAttribute="top" id="v59-IK-Rc0"/>
                                                 <constraint firstItem="ikt-Wl-F5X" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Bf5-xa-pKK" secondAttribute="bottom" constant="7.5" id="vhY-Tr-Rmu"/>
                                             </constraints>
@@ -299,7 +288,6 @@
                                             <outlet property="goingButton" destination="ikt-Wl-F5X" id="Vcx-yY-cf6"/>
                                             <outlet property="interestedButton" destination="DNa-da-AGO" id="d1M-mG-khX"/>
                                             <outlet property="locationLabel" destination="j79-cS-qJr" id="ZyY-HP-Hr1"/>
-                                            <outlet property="notGoingButton" destination="TxQ-tk-bxF" id="lPK-5C-ngj"/>
                                             <outlet property="orgNameLabel" destination="eEz-71-JnC" id="wdS-6K-uCZ"/>
                                             <outlet property="profileImage" destination="hZa-AU-kNH" id="kxU-kO-IPU"/>
                                             <outlet property="timeLabel" destination="qEy-gm-1G8" id="5ne-Oc-ByT"/>
@@ -1014,6 +1002,7 @@
         <image name="poster-placeholder" width="259" height="194"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="KDd-fC-7WB"/>
         <segue reference="TFG-te-zdV"/>
         <segue reference="k7g-Ol-GuT"/>
     </inferredMetricsTieBreakers>

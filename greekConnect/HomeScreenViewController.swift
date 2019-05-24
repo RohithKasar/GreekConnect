@@ -26,6 +26,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet weak var tableView: UITableView!
     
+    
     var events = [Event]()
     var users = [User]()
     
@@ -271,58 +272,53 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func goingPressed(_ sender: UIButton) {
-        let indexPath = getCurrentCellIndexPath(sender)
+        var indexPath = getCurrentCellIndexPath(sender)
+        let event = self.events[(indexPath?.popLast())!]
+        //print(indexPath?.popLast())
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath!) as! PostCell
-        cell.delegate = self
+        let currentId = Firebase.Auth.auth().currentUser?.uid ?? "bleep"
+        DataService.instance.REF_USER.child(currentId).child("personalEvents").updateChildValues([event.eventId : event.name])
         
-        cell.going = true
-        cell.interested = false
-        cell.notGoing = false
-        cell.goingButton.isHidden = true
-        cell.goingButton.isEnabled = false
-        cell.interestedButton.isHidden = true
-        cell.interestedButton.isEnabled = false
-        cell.notGoingButton.isHidden = true
-        cell.notGoingButton.isEnabled = false
-        //cell.isHidden = true
-        self.tableView.reloadData()
-    }
-
-    func interestedPressed(_ sender: UIButton) {
-        let indexPath = getCurrentCellIndexPath(sender)
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath!) as! PostCell
-        cell.delegate = self
-        cell.going = false
-        cell.interested = true
-        cell.notGoing = false
-        cell.goingButton.isHidden = true
-        cell.goingButton.isEnabled = false
-        cell.interestedButton.isHidden = true
-        cell.interestedButton.isEnabled = false
-        cell.notGoingButton.isHidden = true
-        cell.notGoingButton.isEnabled = false
+        //HOW TO REMOVE AN EVENT FROM EVENT VIEW CONTROLLER
+        //DataService.instance.REF_USER.child(currentId).child("personalEvents").child(event.eventId).removeValue()
+        print("GOING CLICKED")
         self.tableView.reloadData()
     }
     
     func notGoingPressed(_ sender: UIButton) {
-        let indexPath = getCurrentCellIndexPath(sender)
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath!) as! PostCell
-        cell.delegate = self
         
-        cell.going = false
-        cell.interested = false
-        cell.notGoing = true
-        cell.goingButton.isHidden = true
-        cell.goingButton.isEnabled = false
-        cell.interestedButton.isHidden = true
-        cell.interestedButton.isEnabled = false
-        cell.notGoingButton.isHidden = true
-        cell.notGoingButton.isEnabled = false
+        var indexPath = getCurrentCellIndexPath(sender)
+        let event = self.events[(indexPath?.popLast())!]
+        //print(indexPath?.popLast())
+        
+        let currentId = Firebase.Auth.auth().currentUser?.uid ?? "bleep"
+        //DataService.instance.REF_USER.child(currentId).child("personalEvents").updateChildValues([event.eventId : event.name])
+        
+        //HOW TO REMOVE AN EVENT FROM EVENT VIEW CONTROLLER
+        print("Yeet")
+        DataService.instance.REF_USER.child(currentId).child("personalEvents").child(event.eventId).removeValue()
         self.tableView.reloadData()
     }
+
+    func interestedPressed(_ sender: UIButton) {
+//        let indexPath = getCurrentCellIndexPath(sender)
+//
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath!) as! PostCell
+//        cell.delegate = self
+//        cell.going = false
+//        cell.interested = true
+//        cell.notGoing = false
+//        cell.goingButton.isHidden = true
+//        cell.goingButton.isEnabled = false
+//        cell.interestedButton.isHidden = true
+//        cell.interestedButton.isEnabled = false
+//        cell.notGoingButton.isHidden = true
+//        cell.notGoingButton.isEnabled = false
+//        self.tableView.reloadData()
+    }
+    
+    
     
     func getCurrentCellIndexPath(_ sender: UIButton) -> IndexPath? {
         let buttonPosition = sender.convert(CGPoint.zero, to: tableView)

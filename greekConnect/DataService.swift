@@ -47,6 +47,7 @@ class DataService {
                 let name = event.childSnapshot(forPath: "name").value as! String
                 let poster = event.childSnapshot(forPath: "poster").value as! String
                 let privacy = event.childSnapshot(forPath: "isPrivate").value as! String
+                let eventId = event.childSnapshot(forPath: "eventId").value as! String
                 var isPrivate = false
                 if (privacy == "true1") {
                     //print(name)
@@ -54,7 +55,8 @@ class DataService {
                 }
                 
 
-                let event : Event = Event(name: name, location: location, time: time, description: description, poster: poster, isPrivate: isPrivate)
+                let event : Event = Event(name: name, location: location, time: time, description: description, poster: poster,
+                                          isPrivate: isPrivate, eventId: eventId)
 
                 eventsArray.append(event)
         
@@ -69,11 +71,16 @@ class DataService {
                    description: String, id: String, uploadComplete: @escaping (_ status: Bool) -> ()) {
 
     
-        let eventData : [String: Any?] = ["name" : name, "location" : location, "time": time, "description": description, "poster": id, "isPrivate": "false1"]
+        
 
             
-        REF_EVENTS.childByAutoId().updateChildValues(eventData as [AnyHashable : Any])
-            uploadComplete(true)
+        let eventId = REF_EVENTS.childByAutoId()
+        let sexyId = eventId.description().dropFirst(49)
+        
+        let eventData : [String: Any?] = ["name" : name, "location" : location, "time": time, "description": description,
+                                          "poster": id, "isPrivate": "false1", "eventId": sexyId ]
+        eventId.updateChildValues(eventData as [AnyHashable : Any])
+        uploadComplete(true)
     }
     
    
@@ -102,12 +109,15 @@ class DataService {
     
     func pushExchange(name: String, location: String, time: String, description: String, id: String, recipient: String,
                       uploadComplete: @escaping (_ status: Bool) -> ()) {
-        let eventData : [String: Any?] = ["name" : name, "location" : location, "time": time, "description": description, "poster": id, "isPrivate": "true1"]
+        
         let autoId = REF_EVENTS.childByAutoId()
         
-        autoId.updateChildValues(eventData as [AnyHashable : Any])
+        
         let sexyId = autoId.description().dropFirst(49)
         
+        let eventData : [String: Any?] = ["name" : name, "location" : location, "time": time, "description": description, "poster": id, "isPrivate": "true1", "eventId":sexyId]
+        
+        autoId.updateChildValues(eventData as [AnyHashable : Any])
         REF_USER.child(recipient).child("personalEvents").updateChildValues([String(sexyId) : name])
         uploadComplete(true)
     }
@@ -144,19 +154,19 @@ class DataService {
     
     
     func fetchPrivateEvents(forUser userId : String, handler: @escaping (_ privateEvents: [String]) -> ()) {
-        var names = [String]()
+        var eventIds = [String]()
         REF_USER.observeSingleEvent(of: .value) { (allUsersSnapshot) in
             guard let allUsersSnapshot = allUsersSnapshot.children.allObjects as? [DataSnapshot] else {return }
             for user in allUsersSnapshot {
                 let id = user.childSnapshot(forPath: "id").value as! String
                 if (id == userId) {
                     let memberDict = user.childSnapshot(forPath: "personalEvents").value as! [String:String]
-                    names = Array(memberDict.values)
+                    eventIds = Array(memberDict.keys)
                 }
             }
             
-            //names has what i want
-            handler(names)
+            //eventIds has what i want
+            handler(eventIds)
         }
     }
     

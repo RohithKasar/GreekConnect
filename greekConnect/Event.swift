@@ -16,6 +16,7 @@ class Event {
     private var _description : String
     private var _poster : String
     private var _isPrivate : Bool
+    private var _eventId : String
 
     var name : String {
         return _name
@@ -41,7 +42,11 @@ class Event {
         return _poster
     }
     
-    init(name: String, location: String, time: String, description: String, poster: String, isPrivate:Bool) {
+    var eventId : String {
+        return _eventId
+    }
+    
+    init(name: String, location: String, time: String, description: String, poster: String, isPrivate:Bool, eventId: String) {
         //, going: String, interested: String, notGoing: String) {
         self._description = description
         self._location = location
@@ -49,6 +54,7 @@ class Event {
         self._name = name
         self._poster = poster
         self._isPrivate = isPrivate
+        self._eventId = eventId
 
     }
     
