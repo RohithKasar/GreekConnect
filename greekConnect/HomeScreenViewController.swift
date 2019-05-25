@@ -20,6 +20,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var trailingShadowConstraint: NSLayoutConstraint!
     @IBOutlet weak var menuShadowView: UIView!
     @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
     
 //    @IBOutlet weak var goingLabel: UILabel!
 //    @IBOutlet weak var interestedLabel: UILabel!
@@ -47,7 +48,6 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         menuShadowView.layer.opacity = 0
         
         //profileImage.image = UIImage(named: "blank-profile-pic.jpg")
-        
         
         //let orgName = cell.orgNameLabel.text?.lowercased()
         let orgName = DummyUser.globalVariable.org.lowercased()
@@ -93,6 +93,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
             for user in self.users {
                 if (user.id == currentId) {
                     currentUser = user
+                    self.nameLabel.text = currentUser.name
                 }
             }
             
@@ -119,7 +120,15 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = false
+        super.viewWillAppear(animated)
+        
+        AppDelegate.AppUtility.lockOrientation(.portrait)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        AppDelegate.AppUtility.lockOrientation(.all)
     }
 
     @IBAction func openSideMenu(_ sender: Any) {
@@ -142,7 +151,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
             hamburgerButton.image = UIImage(named: "icons8-menu-filled-50.png")
             
             leadingConstraint.constant = 154
-            trailingConstraint.constant = 154
+            trailingConstraint.constant = -154
             leadingShadowConstraint.constant = 154
             trailingShadowConstraint.constant = 154
             UIView.animate(withDuration: 0.2, animations: {
@@ -209,7 +218,6 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return events.count
     }
     
@@ -217,13 +225,25 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
         cell.delegate = self
         
+        let whiteRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 8, width: self.view.frame.size.width - 20, height: tableView.rectForRow(at: indexPath).size.height - 20))
+        
+        cell.contentView.backgroundColor = UIColor.init(white: 0.9, alpha: 1.0)
+        
+        whiteRoundedView.layer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 1.0, 0.9])
+        whiteRoundedView.layer.masksToBounds = false
+        whiteRoundedView.layer.cornerRadius = 5.0
+        whiteRoundedView.layer.shadowOffset = CGSize(width: -1, height: 1)
+        whiteRoundedView.layer.shadowOpacity = 0.2
+        
+        cell.contentView.addSubview(whiteRoundedView)
+        cell.contentView.sendSubviewToBack(whiteRoundedView)
+
+        
         let event = events[indexPath.row]
         cell.eventNameLabel.text = event.name
-        cell.descriptionLabel.text = "Description " + event.description
+        cell.descriptionLabel.text = event.description
         cell.locationLabel.text = "Where: " + event.location
         cell.timeLabel.text = "When: " + event.time
-        
-        
         
         let key = event.poster
         //find the key in users and extract their username and org
@@ -262,13 +282,15 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         
         
         cell.profileImage.layer.cornerRadius = 19.5
+        cell.profileImage.layer.borderWidth = 1.0
+        cell.profileImage.layer.borderColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.6, 0.6, 0.6, 1.0])
         cell.profileImage.clipsToBounds = true
 
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 500
+        return 550
     }
     
     func goingPressed(_ sender: UIButton) {

@@ -54,12 +54,12 @@ class DataService {
                     isPrivate = true
                 }
                 
-
+                
                 let event : Event = Event(name: name, location: location, time: time, description: description, poster: poster,
                                           isPrivate: isPrivate, eventId: eventId)
-
+                
                 eventsArray.append(event)
-        
+                
                 
             }
             
@@ -69,11 +69,11 @@ class DataService {
     
     func pushEvent(name : String, location: String, time: String,
                    description: String, id: String, uploadComplete: @escaping (_ status: Bool) -> ()) {
-
-    
         
-
-            
+        
+        
+        
+        
         let eventId = REF_EVENTS.childByAutoId()
         let sexyId = eventId.description().dropFirst(49)
         
@@ -83,7 +83,7 @@ class DataService {
         uploadComplete(true)
     }
     
-   
+    
     
     func fetchUser(handler: @escaping ( _ events: [User]) -> ()) {
         var userArray = [User]()
@@ -108,7 +108,7 @@ class DataService {
     }
     
     func pushExchange(name: String, location: String, time: String, description: String, id: String, recipient: String,
-                      uploadComplete: @escaping (_ status: Bool) -> ()) {
+                      handler: @escaping ( _ autoId : String) -> ()) {
         
         let autoId = REF_EVENTS.childByAutoId()
         
@@ -116,10 +116,9 @@ class DataService {
         let sexyId = autoId.description().dropFirst(49)
         
         let eventData : [String: Any?] = ["name" : name, "location" : location, "time": time, "description": description, "poster": id, "isPrivate": "true1", "eventId":sexyId]
-        
         autoId.updateChildValues(eventData as [AnyHashable : Any])
         REF_USER.child(recipient).child("personalEvents").updateChildValues([String(sexyId) : name])
-        uploadComplete(true)
+        handler(String(sexyId))
     }
     
     func fetchOrgs(handler: @escaping ( _ events: [Organization]) -> ()) {
@@ -153,8 +152,9 @@ class DataService {
     
     
     
-    func fetchPrivateEvents(forUser userId : String, handler: @escaping (_ privateEvents: [String]) -> ()) {
+    func fetchPrivateEvents(forUser userId : String, handler: @escaping (_ privateEvents: [String:String]) -> ()) {
         var eventIds = [String]()
+        var events = [String: String]()
         REF_USER.observeSingleEvent(of: .value) { (allUsersSnapshot) in
             guard let allUsersSnapshot = allUsersSnapshot.children.allObjects as? [DataSnapshot] else {return }
             for user in allUsersSnapshot {
@@ -162,29 +162,32 @@ class DataService {
                 if (id == userId) {
                     let memberDict = user.childSnapshot(forPath: "personalEvents").value as! [String:String]
                     eventIds = Array(memberDict.keys)
+                    events = user.childSnapshot(forPath: "personalEvents").value as! [String:String]
                 }
             }
             
             //eventIds has what i want
-            handler(eventIds)
+            //handler(eventIds)
+            handler(events)
         }
     }
     
-    /*func getIds (forOrg paramOrg : String, handler: @escaping ( _ uidArray: [String]) -> ()) {
+    
+    
+    func getIds (forOrg paramOrg: String, handler: @escaping (_ uidArray : [String]) -> ()) {
         REF_ORGS.observeSingleEvent(of: .value) { (orgSnapshot) in
             var idArray = [String]()
-            guard let orgSnapshot = orgSnapshot.children.allObjects as? [DataSnapshot] else {return}
+            guard let orgSnapshot = orgSnapshot.children.allObjects as? [DataSnapshot] else { return }
             for org in orgSnapshot {
-                //let membersSnapshot = org.childSnapshot(forPath: "members") as? [DataSnapshot]
-                //extract name from this org
                 let name = org.childSnapshot(forPath: "name").value as! String
                 if (name == paramOrg) {
-                    idArray = org.childSnapshot(forPath: "members").value as! [String]
+                    let idDict = org.childSnapshot(forPath: "members").value as! [String: String]
+                    idArray = Array(idDict.keys)
                 }
             }
             handler(idArray)
         }
-    }*/
+    }
     
     func pushUser(name : String, email : String, id : String,
                   uploadComplete: @escaping (_ status: Bool) -> ()) {

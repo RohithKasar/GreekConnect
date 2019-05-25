@@ -17,10 +17,12 @@ class OrgPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     var email = DummyUser.globalVariable.email
     var ref:DatabaseReference?
     var organization = ["placeholder"]
-    var fratList = ["", "Alpha Epsilon Omega, Eta","Alpha Epsilon Pi", "Alpha Lamda Mu", "Beta Theta Pi", "Delta Lambda     Phi","Gamma Zeta Alpha", "Kappa Sigma", "Lambda Chi Alpha", "Lambda Theta Phi", "Lambda Phi Epsilon",
-                    "Phi Delta Theta", "Phi Gamma Delta", "Pi Kappa Alpha", "Pi Kappa Phi", "Nu Alpha Kappa",
-                    "Phi Iota Alpha", "Pi Alpha Phi", "Psi Chi Omega", "Sigma Alpha Epsilon", "Sigma Alpha Mu",
-                    "Sigma Chi", "Sigma Nu", "Sigma Phi Epsilon", "Tau Kappa Epsilon", "Triangle"]
+    var fratList = ["", "Alpha Epsilon Omega, Eta","Alpha Epsilon Pi", "Alpha Lamda Mu", "Beta Theta Pi",
+                    "Delta Lambda  Phi", "Gamma Zeta Alpha", "Kappa Sigma", "Lambda Chi Alpha",
+                    "Lambda Phi Epsilon", "Lambda Theta Phi", "Nu Alpha Kappa", "Phi Delta Theta", "Phi Gamma Delta",
+                    "Pi Kappa Alpha", "Pi Kappa Phi", "Phi Iota Alpha", "Pi Alpha Phi", "Psi Chi Omega",
+                    "Sigma Alpha Epsilon", "Sigma Alpha Mu", "Sigma Chi", "Sigma Nu", "Sigma Phi Epsilon",
+                    "Tau Kappa Epsilon", "Triangle"]
     var sorList = ["", "Alpha Chi Omega", "Alpha Epsilon Phi", "Alpha Gamma Alpha", "Alpha Omicron Pi", "Alpha Phi",
                    "Chi Omega", "Delta Delta Delta", "Delta Gamma", "Kappa Alpha Theta", "Kappa Kappa Gamma",
                    "Kappa Zeta Phi", "Lambda Theta Alpha", "Lambda Theta Nu", "Phi Lambda Rho", "Phi Sigma Rho",
@@ -71,6 +73,18 @@ class OrgPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         orgTextField.inputAccessoryView = toolBar
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        AppDelegate.AppUtility.lockOrientation(.portrait)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        AppDelegate.AppUtility.lockOrientation(.all)
+    }
+    
     @objc func donePressed(sender: UIBarButtonItem) {
         var orgArray = [Organization]()
         
@@ -80,13 +94,13 @@ class OrgPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         //DataService.instance.REF_USER.childByAutoId(DummyUser.globalVariable.id)
         DataService.instance.REF_USER.child(DummyUser.globalVariable.id).updateChildValues(["org" : passedOrg])
         var inside = false
-        
+        var existingMembers = [String]()
         DataService.instance.fetchOrgs(handler: { (paramOrgs) in
             orgArray = paramOrgs
             for org in orgArray {
                 if (org.name == passedOrg) {
                     inside = true;
-                    
+                    existingMembers = org.memberIds
                 }
             }
             if (!inside) {
@@ -95,6 +109,9 @@ class OrgPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                 autoId.child("members").updateChildValues([self.id:self.email])
             } else {
                 Database.database().reference().child("Organizations").child(passedOrg).child("members").updateChildValues([self.id:self.email])
+                DataService.instance.fetchPrivateEvents(forUser: existingMembers[0], handler: { (paramPrivateEvents) in
+                    Database.database().reference().child("Users").child(DummyUser.globalVariable.id).child("personalEvents").updateChildValues(paramPrivateEvents)
+                })
             }
             
         })

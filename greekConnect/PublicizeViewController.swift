@@ -22,14 +22,12 @@ class PublicizeViewController: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var timeField: UITextField!
     @IBOutlet weak var descriptionView: UITextView!
 
-    var timeOption = [["", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
-                       ["", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12",
+    var timeOption = [["Mo", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
+                       ["Day", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12",
                         "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
                         "25", "26", "27", "28", "29", "30", "31"],
-                       ["", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029",
-                        "2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037", "2038", "2039", "2040"],
-                       ["", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
-                       ["", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12",
+                       ["Hr", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
+                       ["Min", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12",
                         "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
                         "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36",
                         "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48",
@@ -72,6 +70,12 @@ class PublicizeViewController: UIViewController, UIImagePickerControllerDelegate
         timeField.inputAccessoryView = toolBar
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        AppDelegate.AppUtility.lockOrientation(.portrait)
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return timeOption.count
     }
@@ -87,11 +91,10 @@ class PublicizeViewController: UIViewController, UIImagePickerControllerDelegate
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let month = timeOption[0][picker.selectedRow(inComponent: 0)]
         let day = timeOption[1][picker.selectedRow(inComponent: 1)]
-        let year = timeOption[2][picker.selectedRow(inComponent: 2)]
-        let hour = timeOption[3][picker.selectedRow(inComponent: 3)]
-        let minute = timeOption[4][picker.selectedRow(inComponent: 4)]
-        let period = timeOption[5][picker.selectedRow(inComponent: 5)]
-        timeField.text = month + "/" + day + "/" + year + " " + hour + ":" + minute + " " + period
+        let hour = timeOption[2][picker.selectedRow(inComponent: 2)]
+        let minute = timeOption[3][picker.selectedRow(inComponent: 3)]
+        let period = timeOption[4][picker.selectedRow(inComponent: 4)]
+        timeField.text = month + "/" + day + " " + hour + ":" + minute + " " + period
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -122,6 +125,10 @@ class PublicizeViewController: UIViewController, UIImagePickerControllerDelegate
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.navigationController?.isNavigationBarHidden = false
+        
+        super.viewWillDisappear(animated)
+        
+        AppDelegate.AppUtility.lockOrientation(.all)
     }
     
     @IBAction func publishClicked(_ sender: Any) {

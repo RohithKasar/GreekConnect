@@ -29,7 +29,7 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidAppear(animated)
         let currentUser = Auth.auth().currentUser?.uid ?? "bleep"
         DataService.instance.fetchPrivateEvents(forUser: currentUser) { (paramPrivateEvents) in
-            self.eventIds = paramPrivateEvents.reversed()
+            self.eventIds = Array(paramPrivateEvents.keys).reversed()
             
             DataService.instance.fetchEvents(handler: { (paramEvents) in
                 self.events = paramEvents
@@ -51,6 +51,18 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.users = paramUsers
             self.eventsTableView.reloadData()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        AppDelegate.AppUtility.lockOrientation(.portrait)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        AppDelegate.AppUtility.lockOrientation(.all)
     }
     
     @IBAction func back(_ sender: Any) {
