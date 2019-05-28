@@ -35,8 +35,8 @@ An app for students in the greek life community on campus to interact. Some exam
 * [x] Login persistence and logging out of database works, and creating the organized databases for each page
 * [x] Designs and logos and launch screen created
 * [x] Events and Profiles are configured with the database.
-* [ ] Members will be able to send invites to other organizations as a whole, which will result in a push notification for everyone in the other organization
-* [ ] Members will have the option to RSVP to events they have been invited to, as well as post events to a common feed.
+* [x] Members will be able to send invites to other organizations as a whole, which will result in a push notification for everyone in the other organization
+* [x] Members will have the option to RSVP to events they have been invited to, as well as post events to a common feed.
 
 **Optional Nice-to-have Stories**
 
