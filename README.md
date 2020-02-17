@@ -4,6 +4,12 @@ Group Project - README Template
 
 # GreekConnect
 
+
+##### FINISHED PRODUCT
+
+<img src="http://g.recordit.co/cKm734p4J7.gif" width='' height='' alt='Video Walkthrough' />
+
+
 ## Table of Contents
 1. [Overview](#Overview)
 1. [Product Spec](#Product-Spec)
@@ -92,6 +98,8 @@ An app for students in the greek life community on campus to interact. Some exam
 
 ##### Milestone 3
 <img src="http://g.recordit.co/xYo9EcwKMB.gif" width='' height='' alt='Video Walkthrough' />
+
+
 
 ## Schema 
 [This section will be completed in Unit 9]
